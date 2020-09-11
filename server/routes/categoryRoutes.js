@@ -15,16 +15,13 @@ router
 router
 .route("/:id")
 .get((req, res) => {
-  // console.log(req.params);
-  Question.where({categoryId: req.params.id}) // params: {id: '5'}
+  Question.where({categoryId: req.params.id})
     .fetchAll()
     .then((question) => {
-      // console.log(question);
       res.status(200).json({questions : question});
     }).catch((error) => { 
-      // console.log(error); 
       res.status(401).json({ error: 'unable to fetch questions' });
     });
 })
 
-  module.exports = router;
+module.exports = router;

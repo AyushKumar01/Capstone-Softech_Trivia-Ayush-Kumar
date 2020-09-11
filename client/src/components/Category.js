@@ -23,7 +23,6 @@ class Category extends Component {
     getCategories = () => {
         return axios
           .get(`${API_URL}/category`)
-
     }
   
     render() {
@@ -35,7 +34,7 @@ class Category extends Component {
                 <div className="category__wrapper">
                     <div className="category__card-head"><h2 className="category__card-heading">Pick Category</h2></div>
                     {categories && categories.map((cat) => (
-                        <div key={cat.id} className="category__card"><Link to={`/category/${cat.id}`} className="category__card-link" ><p className="category__card-name">{cat.category}</p></Link></div>
+                        <div key={cat.id} className="category__card"><Link to={`/category/${cat.id}`} className="category__card-link"><p className="category__card-name">{cat.category}</p></Link></div>
                     ))}
                 </div>
                 <div className="category__container">

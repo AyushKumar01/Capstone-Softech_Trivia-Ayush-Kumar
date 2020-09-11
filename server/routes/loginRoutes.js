@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const Login = require("../models/login");
+const { route } = require("./categoryRoutes");
 require('dotenv').config();
 const { JWT_SECRET } = process.env;
 
@@ -25,7 +26,22 @@ router
             expiresIn: '30min',
           });
         res.json({ status: 200, token });
-    }).catch(() => {res.status(401).json({ error: 'user details are invalid' });});
+    }).catch(() => {res.status(200).json({ error: 'user details are invalid' });});
+  
+    router.route("/signup")
+    .post((req, res) => {
+      const { firstName, lastName, email, password } = req.body;
+      new SignUp({
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password
+      })
+      .save()
+      .then((newSignUp) => {
+          res.status(201).json({ newSignUp });
+        });
+    });
     // if (username === user.username && password === user.password) {
     //   console.log('user info matches');
     //   const token = jwt.sign({ username, likes }, JWT_SECRET, {

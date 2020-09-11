@@ -42,6 +42,10 @@ export default class Quiz extends Component {
 
     render() {
         const { questionName, multipleChoice } = this.state.selectedQuestion;
+        let showSubmit = false;
+        if(this.state.number === this.state.questions.length){
+            showSubmit = true;
+        }
         return (
             <div className="quiz">
                 <div className="quiz__timer">
@@ -50,11 +54,15 @@ export default class Quiz extends Component {
                 </div>
                 <div className="quiz__wrapper">
                     <div className="quiz__card-head">
-                        <h3>Question 0/10</h3>
+                        <h3>Question {this.state.number}/{this.state.questions.length}</h3>
                         <h3 className="quiz__card-heading"> {questionName}</h3>
                     </div>
                     <Answer multipleChoice={multipleChoice}/>
+                    {showSubmit === true ? (
+                        <button className="quiz__btn" onClick={this.submit}>SUBMIT</button>
+                    ) :
                     <button className="quiz__btn" onClick={this.nextQuestionHandler}>NEXT QUESTION</button>
+                    }
                 </div>
             </div>
         )
