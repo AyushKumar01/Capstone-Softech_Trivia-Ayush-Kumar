@@ -1,0 +1,32 @@
+html, body {
+    box-sizing: border-box;
+    font-family: 'AvenirNext LT Pro';
+    font-weight: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+*,
+*::before,
+*::after
+{
+    box-sizing: inherit;  
+}
+
+ul {
+    list-style-type: none;
+}
+
+// footer {
+//     background-color: $lightBlack;
+// }
+
+// a {
+//     cursor: pointer;
+//     text-decoration: none;
+//     color: $white;
+// }

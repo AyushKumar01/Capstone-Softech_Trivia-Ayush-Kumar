@@ -1,0 +1,30 @@
+@mixin tablet {
+    @media screen and (min-width: $tablet-breakpoint) {
+      @content;
+    }
+  }
+  @mixin laptop {
+    @media screen and (min-width: $laptop-breakpoint) {
+      @content;
+    }
+  }
+  
+  @mixin desktop {
+    @media screen and (min-width: $desktop-breakpoint) {
+      @content;
+    }
+  }
+  
+
+//   @mixin grid ($cols, $mgn) {
+//     float: left;
+//     margin-right: $mgn;
+//     margin-bottom: $mgn;
+//     width: ((100% - (($cols - 1) * $mgn)) / $cols );
+
+//     &:nth-child(#{$cols}n) {
+//         margin-right: 0;
+//     }
+    
+// }
+  

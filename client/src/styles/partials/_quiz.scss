@@ -1,0 +1,179 @@
+.quiz{
+    background-color: lightgrey;
+    margin: 16px 16px;
+    // margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // // &__timer{
+    // //     display: flex;
+    // //     align-items: center;
+        
+    // // }
+    &__timer-text{
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        width: 150px;
+        // height: 100px;
+        // width: 150px;
+        // border-radius: 50%;
+        color: white;
+        margin: 15px 0;
+        background-color: $soft-black;
+        border: 2px solid white;
+    }
+    &__timer-image{
+        display: none;
+        margin: 15px 0;
+       
+    }
+    // &__wrapper {
+    //     display: flex;
+    //     flex-direction: column;
+    //     // align-items: center;
+    //     background-color: white;
+    //     width: 60vw;
+    // }
+    &__card-head {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: white;
+        align-items: center;
+        padding: 0.5rem;
+        min-height: 12.5vw;
+        margin-bottom: 30px;
+        width: 90vw;
+        background-color:$bright-blue;
+    }
+
+    // &__answer {
+    //     display: flex;
+    //     flex-direction: column;
+    // }
+    &__card {
+        background-color: #fff;
+        border: 2px solid #0094da;
+        min-height: 70px;
+        // width: 48%;
+        width: 100%;
+        display: flex;
+        margin-bottom: 30px;
+        transition: color .3s ease, border-color .3s ease, transform .3s ease;
+        cursor: pointer;
+        // display: flex;
+        // align-items: center;
+        // min-height: 7.81vw;
+        // // width: 60vw;
+        // background-color: #fff;
+        // margin-top: 0.2rem;
+        // border: 2px solid $bright-blue;
+
+    }
+    &__card-heading {
+        margin-top: 10px;
+    }
+     &__card-number {
+        // justify-content: center;
+        // align-items: center;
+        // display: flex;
+        // background-color:$bright-blue;
+        // margin: 16px;
+        // height: 25px;
+        // width: 25px;
+        // text-align: center;
+        background-color: #0084da;
+        color: #fff;
+        font-size: 30px;
+        flex: 75px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color .3s ease;
+    }
+    &__card-name {
+        color: #0b0e21;
+        font-size: 16px;
+        font-weight: 600;
+        flex: calc(100% - 75px);
+        margin: auto 20px;
+        transition: color .3s ease;
+    }
+    &__btn {
+        width: 18rem;
+        border: 2px solid $soft-black;
+        border-radius: 0;
+        background-color: $soft-black;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        font-size: 18px;
+        font-weight: 600;
+        padding: 14px 0;
+        margin: 0 auto 20px;
+        // text-transform: uppercase;
+        transition: color .2s ease, background-color .2s ease;
+    }
+//==============tablet======================
+    @include tablet {
+        margin: 24px 24px;
+        padding: 0 24px;
+        &__card-head {
+            width: 93.75vw;
+        }
+        &__answer {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        &__card{
+            width: 45%;
+            margin: 18px;
+        }
+
+
+        &__btn {
+            width: 24rem;
+            border: 2px solid $soft-black;
+            border-radius: 0;
+            background-color: $soft-black;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 600;
+            padding: 18px 0;
+            margin: 0 auto 20px;
+            // text-transform: uppercase;
+            transition: color .2s ease, background-color .2s ease;
+        }
+    }
+@include laptop {
+    // margin: 120px 120px;
+    // padding: 0 120px;
+        &__timer{
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row-reverse;
+        }
+        &__timer-text{
+            flex-direction: column;
+            height: 130px;
+            width: 130px;
+            border-radius: 50%;
+            margin-left: 200px;
+        }
+        &__timer-image{
+            display: unset;
+            height: 130px;
+            width: 130px;
+            border-radius: 50%;
+            margin-right: 200px;
+        }
+    }
+
+   
+}

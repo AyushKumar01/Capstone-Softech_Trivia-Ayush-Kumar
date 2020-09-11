@@ -1,0 +1,220 @@
+.category {
+    margin: auto 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align:center ;
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: white;
+        width: 60vw;
+    }
+    &__card-head {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 12.5vw;
+        width: 60vw;
+        background-color: $soft-black;
+    }
+    &__card {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        height: 7.81vw;
+        width: 60vw;
+        background-color: $soft-black;
+        margin-top: 0.2rem;
+
+    }
+    &__card-heading {
+        color: white;
+    }
+    &__card-name {
+        margin-top: 0.3rem;
+        color: white;
+    }
+    &__card-link {
+        text-decoration: none;
+    }
+// =======================photos=======================
+    &__logo {
+        display: none;
+    }
+    &__photos {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        padding: 14px;
+        width: 60vw;
+    }
+    &__photos-size {
+        height: 15.62vw;
+        width: 15.62vw;
+        background-size: cover; 
+        background-position: center;
+        margin: 2px;
+    }
+
+    // ==================tablet==============
+    // ==================tablet==============
+
+    @include tablet {
+        margin: 0 1.5rem;
+        flex-direction: row-reverse;
+        &__wrapper {
+            width: 46vw;
+        }
+        &__card-head {
+            width: 46vw;
+            height: 7.89vw;
+        }
+        &__card {
+            width: 46vw;
+            height: 5.26vw;
+        }
+
+// ================photos=====================
+
+        &__logo {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        &__logo-image {
+            background-image: url(../assets/images/logo.png);
+            height: 130px;
+            width: 130px;
+            background-size: cover; 
+            background-position: center;
+            border-radius: 50%;
+        }
+        &__photos {
+            background-color: unset;
+            padding: 14px;
+            width: 46vw;
+            margin-right: 14px;
+        }
+        &__photos-size {
+            height: 13.15vw;
+            width: 13.15vw;
+            border-radius: 50%;
+        }
+
+
+    }
+    // ===============laptop==============
+    // ===============laptop==============
+
+    
+    @include laptop {
+        margin: 0 7.5rem;
+        flex-direction: row-reverse;
+        &__wrapper {
+            // width: 350px;
+            width: 34.31vw;
+        }
+        &__card-head {
+            width: 34.31vw;
+            // height: 60px;
+            height: 5.88vw;
+        }
+        &__card {
+            width: 34.31vw;
+            // height: 40px;
+            height: 3.92vw;
+        }
+
+// ================photos=====================
+        &__container {
+            margin-right: 5rem;
+        }
+        &__logo {
+            display: flex;
+            justify-content: center;
+            // margin-bottom: 50px;
+        }
+        &__logo-image {
+            background-image: url(../assets/images/logo.png);
+            height: 150px;
+            width: 150px;
+            background-size: cover; 
+            background-position: center;
+            border-radius: 50%;
+        }
+        &__photos {
+            background-color: unset;
+            padding: 14px;
+            width: 34.31vw;
+            margin-right: 14px;
+        }
+        &__photos-size {
+            height: 9.80vw;
+            // 100px
+            width: 9.80vw;
+            border-radius: 50%;
+        }
+
+
+    }
+      // ===============desktop==============
+      // ===============desktop==============
+
+    
+      @include desktop {
+        margin: 0 12.5rem;
+//         flex-direction: row-reverse;
+//         &__wrapper {
+//             // width: 350px;
+//             width: 24.30vw;
+//         }
+//         &__card-head {
+//             width: 24.30vw;
+//             // height: 60px;
+//             height: 4.16vw;
+//         }
+//         &__card {
+//             width: 24.30vw;
+//             // height: 40px;
+//             height: 2.77vw;
+//         }
+
+// // ================photos=====================
+//         &__container {
+//             margin-right: 5rem;
+//         }
+//         &__logo {
+//             display: flex;
+//             justify-content: center;
+//             // margin-bottom: 50px;
+//         }
+//         &__logo-image {
+//             background-image: url(../assets/images/logo.png);
+//             height: 150px;
+//             width: 150px;
+//             background-size: cover; 
+//             background-position: center;
+//             border-radius: 50%;
+//         }
+//         &__photos {
+//             background-color: unset;
+//             padding: 14px;
+//             width: 24.30vw;
+//             margin-right: 14px;
+//         }
+//         &__photos-size {
+//             height: 6.94vw;
+//             // 100px
+//             width: 6.94vw;
+//             border-radius: 50%;
+//         }
+
+
+    }
+}
+
