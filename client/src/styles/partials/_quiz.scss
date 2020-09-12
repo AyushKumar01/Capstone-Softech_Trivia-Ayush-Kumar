@@ -83,6 +83,16 @@
         // border: 2px solid $bright-blue;
 
     }
+    &__card-correct {
+        // color: green;
+        border-color: green;
+        // background-color: green;
+    }
+    &__card-wrong {
+        // color: red;
+        border-color: red;
+        // background-color: red;
+    }
     &__card-heading {
         margin-top: 10px;
     }

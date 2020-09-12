@@ -276,8 +276,21 @@ ul {
           align-items: center;
 }
 
-.header__logo {
-  display: none;
+.header__logout-btn {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+}
+
+.header__logout-btn:hover {
+  text-decoration: underline;
+}
+
+.header__username {
+  color: white;
+  font-size: 18px;
 }
 
 .header__nav {
@@ -406,6 +419,14 @@ ul {
   transition: color .3s ease,  border-color .3s ease,  transform .3s ease;
   transition: color .3s ease,  border-color .3s ease,  transform .3s ease,  -webkit-transform .3s ease;
   cursor: pointer;
+}
+
+.quiz__card-correct {
+  border-color: green;
+}
+
+.quiz__card-wrong {
+  border-color: red;
 }
 
 .quiz__card-heading {

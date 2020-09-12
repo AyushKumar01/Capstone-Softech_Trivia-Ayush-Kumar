@@ -9,7 +9,6 @@ const API_URL = process.env.API_URL || "http://localhost:5000";
 
 export class Main extends Component {
     state = {
-        isSignedUp: false,
         isLoggedIn: false,
         isLoginError: false,
         errorMessage: ''
@@ -18,12 +17,10 @@ export class Main extends Component {
       componentDidMount() {
         if (localStorage.getItem('jwt_token')) {
           this.setState({
-            isSignedUp: true,
             isLoggedIn: true,
           });
         }
       }
-    
       
       login = (event) => {
         event.preventDefault();
@@ -51,7 +48,7 @@ export class Main extends Component {
             console.log(err)
           });
       };
-    
+
       render () {
         const { isLoginError, errorMessage } = this.state
         return (

@@ -3,6 +3,7 @@ import LogOutBtn from './LogOutBtn';
 
 class Score extends Component {
     render() {
+        console.log(this.props.location.aboutProps);
         return (
             <div className="final-wrapper">
                 <div className="final__score">

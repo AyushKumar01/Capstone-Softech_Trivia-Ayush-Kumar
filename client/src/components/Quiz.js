@@ -9,7 +9,10 @@ export default class Quiz extends Component {
     state = {
         questions: [],
         selectedQuestion: {},
-        number: 0
+        number: 0,
+        score: 0,
+        showButton: false,
+        questionAnswered: false
     }
   
     async componentDidMount() {
@@ -30,6 +33,23 @@ export default class Quiz extends Component {
         .get(`${API_URL}/category/${id}`)   
     }
 
+    nextQuestionHandler = () => {
+        let { number } = this.state;
+
+            this.pushData(number);
+            this.setState({
+                showButton: false,
+                questionAnswered: false
+            });
+    }
+
+    handleShowButton = () => {
+        this.setState({
+            showButton: true,
+            questionAnswered: true
+        })
+    }
+
     pushData = (number) => {
         this.setState({
             selectedQuestion: this.state.questions[number],
@@ -37,12 +57,18 @@ export default class Quiz extends Component {
         });
     }
 
-    nextQuestionHandler = () => {
-        this.pushData(this.state.number);
+    // nextQuestionHandler = () => {
+    //     this.pushData(this.state.number);
+    // }
+
+    increaseScore = () => {
+        this.setState({score: this.state.score + 1});
     }
 
     render() {
-        const { questionName, multipleChoice } = this.state.selectedQuestion;
+        const { questionName, multipleChoice, answer } = this.state.selectedQuestion;
+        const { showButton, questionAnswered, score } = this.state;
+
         let showSubmit = false;
         if(this.state.number === this.state.questions.length){
             showSubmit = true;
@@ -58,11 +84,12 @@ export default class Quiz extends Component {
                         <h3>Question {this.state.number}/{this.state.questions.length}</h3>
                         <h3 className="quiz__card-heading"> {questionName}</h3>
                     </div>
-                    <Answer multipleChoice={multipleChoice}/>
-                    {showSubmit === true ? (
-                        <Link  to='/score'><button className="quiz__btn" onClick={this.submit}>SUBMIT</button></Link>
+                    <Answer multipleChoice={multipleChoice} correctAnswer={answer} increaseScore={this.increaseScore} 
+                            showButton={this.handleShowButton} isAnswered={questionAnswered}/>   
+                    {showSubmit && showButton === true ? (
+                        <Link to={{pathname:'/score', aboutProps:{score: score}}} ><button className="quiz__btn" onClick={this.submit}>SUBMIT</button></Link>
                     ) :
-                    <button className="quiz__btn" onClick={this.nextQuestionHandler}>NEXT QUESTION</button>
+                    (showButton ? <button className="quiz__btn" onClick={this.nextQuestionHandler}>NEXT QUESTION</button> : "")
                     }
                 </div>
             </div>
