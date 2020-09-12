@@ -1,72 +1,55 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import Category from './Category';
-import logo from '../assets/images/logohit.png';
+import About from './About';
 import axios from 'axios';
 require('dotenv').config();
 
-const API_URL = process.env.API_URL || "http://localhost:5000";
+// const API_URL = process.env.API_URL || "http://localhost:5000";
 
 export class SignUp extends Component {
-    state = {
-        isSignedUp: false
-      };
-    
-      componentDidMount() {
-        // if (localStorage.getItem('jwt_token')) {
-        //   this.setState({
-        //     isSignedUp: true,
-        //     isLoggedIn: true,
-        //   });
-        // }
-      }
-    
+   
     signup = (event) => {
     event.preventDefault();
-    console.log(this.signUpForm);
-    const { firstName, lastName, email, password } = event.target;
+    const { firstName, lastName, username, email, password } = event.target;
 
     const userObj = {
         firstName: firstName.value,
         lastName: lastName.value,
         email: email.value,
+        username: username.value,
         password: password.value
     };
     axios
-    .post('http://localhost:5000/signup', userObj)
+    .post('http://localhost:5000/login/signup', userObj)
     .then((response) => {
         console.log('signup response', response);
-        this.setState({
-            isSignedUp: true
-        });
+        this.props.history.push("/");
     })
     .catch((err) => console.log(err));
     };
 
     render() {
-        return (
-          <div>
-            <h1>SignUp</h1>
-            <form onSubmit={this.signup}>
-            {/* <form ref={form => (this.signUpForm = form)}> */}
-              <div className='form-group'>
-                firstName: <input type='text' name='firstName' />
-              </div>
-              <div className='form-group'>
-                lastName: <input type='text' name='lastName' />
-              </div>
-              <div className='form-group'>
-                email: <input type='text' name='email' />
-              </div>
-              <div className='form-group'>
-                Password: <input type='password' name='password' />
-              </div>
-              <button className='btn btn-primary'>Signup</button>
-              {/* <button className='btn btn-primary' onClick={this.signup}>
-                Signup
-              </button> */}
-            </form>
+       return (
+          <>
+          <h1 className="main-welcome">Welcome!</h1>
+          <div className="main-wrapper">
+            <About />
+             <form onSubmit={this.signup} className="login__form">
+                <label className="login__form-label">FIRST NAME</label><br/> 
+                <input className="login__form-userName" type="text" name="firstName" placeholder="Enter Name" /><br/>
+                <label className="login__form-label">LAST NAME</label><br/> 
+                <input className="login__form-userName" type="text" name="lastName" placeholder="Enter Name" /><br/>
+                <label className="login__form-label">USER NAME</label><br/> 
+                <input className="login__form-userName" type="text" name="username" placeholder="Enter Name" /><br/>
+                <label className="login__form-label">EMAIL</label><br/> 
+                <input className="login__form-userName" type="text" name="email" placeholder="Enter Name" /><br/>
+                <label className="login__form-label">ENTER PASSWORD</label><br/> 
+                <input className="login__form-password" type="password" name="password" placeholder="Enter Password" /><br/>
+                <div  className="login__form-buttons">
+                  <button className="login__form-btn" type="submit">SignUp</button>
+                </div>
+              </form>
           </div>
+          </>
         )
       };
 }

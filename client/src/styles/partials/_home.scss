@@ -1,0 +1,78 @@
+.nav-comment{
+    @include tablet {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+        padding: 40px 24px 24px;
+    }
+}
+.nav {
+    margin: 16px 16px;
+    border: 2px solid rgb(231, 229, 229);
+    padding: 16px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__image {
+        background-image: url(../assets/images/logo.png);
+        height: 100px;
+        width: 100px;
+        background-size: cover; 
+        background-position: center;
+        border-radius: 50%;
+        cursor: pointer;
+        transition-duration: 0.4s;
+        &:hover {
+         color: white;
+         box-shadow: 0px 25px 25px 0px rgba(255, 255, 255, 0.993);
+        }
+    }
+    &__text {
+        margin-right: 20px;
+        font-size: 20px;
+        color: white;
+        font-weight: 900;
+    }
+    &__text-icon {
+        position: relative;
+        top: 2px;
+        font-size: 35px;
+        color: aqua;
+    }
+    //===============tablet=============
+    @include tablet {
+        margin: 50px;
+    }
+}
+
+.main-comment{
+    padding: 16px;
+    &__wrapper{
+       border: 2px solid white;
+       padding: 16px;
+    }
+    &__top {
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       background: white;
+       padding: 4px 8px;
+       border: 4px solid $indigo;
+    }
+    &__bottom {
+        color: white;
+        margin: 16px 0;
+        border: 2px solid white;
+        padding: 8px;
+    }
+
+    @include tablet {
+        padding: 16px 24px;
+    }
+    @include laptop {
+        padding: 16px 60px;
+    }
+    @include desktop {
+        padding: 16px 120px;
+    }
+ }

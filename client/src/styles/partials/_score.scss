@@ -1,0 +1,110 @@
+.final-wrapper {
+    padding: 1rem;
+}
+
+.final{
+    &__score {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(231, 229, 229);
+    }
+    &__score-upper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    &__score-text {
+       color: $bright-blue;
+       font-size: 50px;
+    }
+    &__score-count {
+        color: $bright-blue;
+        font-size: 45px;
+    }
+    &__score-btn {
+        display: flex;
+        width: 100%;
+        justify-content: space-evenly;
+    }
+    &__score-playAgain {
+        background-color: $soft-black;
+        color: white;
+        width: 100px;
+        height: 30px;
+        cursor: pointer;
+        outline: none;
+    }
+    &__score-logOut {
+        background-color: $soft-black;
+        color: white;
+        width: 100px;
+        cursor: pointer;
+        outline: none;
+    }
+    &__score-lower {
+        margin-top: 16px;
+        padding: 20px 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border: 2px solid $bright-blue;
+        background-color: rgb(231, 229, 229);
+    }
+    &__score-icon {
+        font-size: 36px;
+        margin-bottom: 10px;
+        color: $indigo;
+        // width: 200px;
+    }
+    &__score-greet {
+        font-weight: bold;
+        // width: 200px;
+    }
+}
+
+
+.comment {
+    &__form {
+        padding: 16px;
+        border: 2px solid white;
+        margin-top: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    &__form-label {
+        background-color: rgb(231, 229, 229);
+        font-weight: bold;
+        padding: 4px 8px;
+        border: 4px solid #2e66e6;
+    }
+    &__form-comment {
+        padding: 16px;
+        width: 100%;
+        height: 100px;
+        border: 2px solid white;
+        background-color: #0084da;
+        outline: none;
+        color: white;
+        font-size: 18;
+    }
+    &__form-comment::-webkit-input-placeholder {
+        color: white;
+     }
+     &__form-btn{
+        background-color: #13182c;
+        color: white;
+        width: 100px;
+        height: 30px;
+        cursor: pointer;
+        outline: none;
+     }
+      
+}

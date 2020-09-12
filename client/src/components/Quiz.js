@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 import Logo from '../assets/images/hourglass.jpg';
 import axios from 'axios';
 import Answer from './Answer';
@@ -59,7 +60,7 @@ export default class Quiz extends Component {
                     </div>
                     <Answer multipleChoice={multipleChoice}/>
                     {showSubmit === true ? (
-                        <button className="quiz__btn" onClick={this.submit}>SUBMIT</button>
+                        <Link  to='/score'><button className="quiz__btn" onClick={this.submit}>SUBMIT</button></Link>
                     ) :
                     <button className="quiz__btn" onClick={this.nextQuestionHandler}>NEXT QUESTION</button>
                     }

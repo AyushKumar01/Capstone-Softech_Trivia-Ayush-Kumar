@@ -1,5 +1,5 @@
 .quiz{
-    background-color: lightgrey;
+    background-color: rgb(231, 229, 229);
     margin: 16px 16px;
     // margin-top: 16px;
     display: flex;
@@ -28,6 +28,14 @@
     &__timer-image{
         display: none;
         margin: 15px 0;
+        
+
+        animation: rotate 2s linear infinite;
+        animation-play-state: running;
+    // &:hover {
+    //   animation-play-state: running;
+    // }
+
        
     }
     // &__wrapper {
@@ -62,7 +70,9 @@
         width: 100%;
         display: flex;
         margin-bottom: 30px;
-        transition: color .3s ease, border-color .3s ease, transform .3s ease;
+        transition: color .3s ease, 
+        border-color .3s ease, 
+        transform .3s ease;
         cursor: pointer;
         // display: flex;
         // align-items: center;
@@ -177,3 +187,11 @@
 
    
 }
+@keyframes rotate {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
