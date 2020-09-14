@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Logo from '../assets/images/hourglass.jpg';
 import axios from 'axios';
 import Answer from './Answer';
-const API_URL = process.env.API_URL || "http://localhost:5000";
+import * as Constant from './Constants';
 
 export default class Quiz extends Component {
     state = {
@@ -30,7 +30,10 @@ export default class Quiz extends Component {
     getQuestionsById = () => {
         let id = this.props.match.params.id;
         return axios
-        .get(`${API_URL}/category/${id}`)   
+        .get(`${Constant.API_URL}/category/${id}`, {
+            headers: {
+              authorization: `${Constant.token}`
+            }})   
     }
 
     nextQuestionHandler = () => {

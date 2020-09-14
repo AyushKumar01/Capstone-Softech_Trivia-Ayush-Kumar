@@ -11,6 +11,10 @@
         align-items: center;
         background-color: rgb(231, 229, 229);
     }
+    &__score-username{
+        color: $bright-blue;
+        font-size: 50px;
+    }
     &__score-upper {
         display: flex;
         flex-direction: column;

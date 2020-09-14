@@ -1,56 +1,90 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import About from './About';
-// import Category from './Category';
+import * as Constant from './Constants';
 import axios from 'axios';
-require('dotenv').config();
-
-const API_URL = process.env.API_URL || "http://localhost:5000";
+// require('dotenv').config();
+const url = Constant.API_URL;
 
 export class Main extends Component {
     state = {
         isLoggedIn: false,
-        isLoginError: false,
-        errorMessage: ''
+        errors: {
+          usernameErr: '',
+          passwordErr: '',
+          loginErr: ''
+        }
       };
     
       componentDidMount() {
-        if (localStorage.getItem('jwt_token')) {
+        if (Constant.token) {
           this.setState({
-            isLoggedIn: true,
+            isLoggedIn: true
           });
+          this.props.history.push("/home");
         }
       }
       
       login = (event) => {
         event.preventDefault();
         const { username, password } = event.target;
+        
+        const errors = this.validate(username.value, password.value);
+        if (errors.usernameErr || errors.passwordErr) {
+          this.setState({ errors : errors });
+          return;
+        }
+
         const userObj = { username: username.value, password: password.value };
-        console.log(API_URL);
+        console.log(url);
         axios
-          .post(`${API_URL}/login`, userObj)
+          .post(`${url}/login`, userObj)
           .then((response) => {
             console.log(response);
-            if (!response.data.error) {
-              localStorage.setItem('jwt_token', response.data.token);
+            if (response.data) {
+              localStorage.setItem('jwt_token', response.data.result.token);
+              localStorage.setItem('username', response.data.result.username);
+              localStorage.setItem('userId', response.data.result.userId);
               this.setState({
                 isLoggedIn: true
               });
-              this.props.history.push("/Category");
+              this.props.history.push("/home");
             }else{
-              this.setState({
-                errorMessage : response.data.error,
-                isLoginError : true
-              })  
+              // this.setState({
+              //   loginErr : response.data.error
+              // })
+              console.log(response);  
             }
           })
-          .catch((err) => {
-            console.log(err)
+          .catch((error) => {
+            if (error.response) {
+              this.setState({
+                errors: {
+                  loginErr : error.response.data.error
+                }
+              }) 
+            }
+            console.log(error.response);
           });
       };
 
+      validate = (username, password) => {
+        let errors = this.state.errors;
+        errors.usernameErr = "";
+        errors.passwordErr = "";
+        errors.loginErr = "";
+        const errorMessage = "This field is required";
+        if (username.length === 0) {
+          errors.usernameErr = errorMessage;
+        }
+        if (password.length === 0) {
+          errors.passwordErr = errorMessage;
+        }
+        return errors;
+      }
+
       render () {
-        const { isLoginError, errorMessage } = this.state
+        const { usernameErr, passwordErr, loginErr } = this.state.errors;
         return (
           <>
           <h1 className="main-welcome">Welcome!</h1>
@@ -59,11 +93,13 @@ export class Main extends Component {
               <form onSubmit={this.login} className="login__form">
                 <label className="login__form-label">USER NAME</label><br/> 
                 <input className="login__form-userName" type="text" name="username" placeholder="Enter Name" /><br/>
+                {usernameErr && usernameErr.length > 0 && <label style={{color: 'red'}}>{usernameErr}</label>}
                 <label className="login__form-label">ENTER PASSWORD</label><br/> 
                 <input className="login__form-password" type="password" name="password" placeholder="Enter Password" /><br/>
-                <div  className="login__form-buttons">
+                {passwordErr && passwordErr.length > 0 && <label style={{color: 'red'}}>{passwordErr}</label>}
+                <div className="login__form-buttons">
                   <button className="login__form-btn" type="submit">Login</button>
-                  {isLoginError && <label style={{color: 'red'}}>{errorMessage}</label>}
+                  {loginErr && loginErr.length > 0 && <label style={{color: 'red'}}>{loginErr}</label>}
                   <Link to='/signUp'><button className='login__signup-btn'>SignUp</button></Link>
                 </div>
               </form>

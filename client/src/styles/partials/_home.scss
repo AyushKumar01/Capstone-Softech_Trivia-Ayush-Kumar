@@ -21,11 +21,21 @@
         background-position: center;
         border-radius: 50%;
         cursor: pointer;
-        transition-duration: 0.4s;
+        // transition-duration: 0.4s;
+        // &:hover {
+        //  color: white;
+        //  box-shadow: 0px 25px 25px 0px rgba(255, 255, 255, 0.993);
+        // }
+        // animation: rotate 2s linear infinite;
+        // animation-play-state: paused;
+        // &:hover {
+        //   animation-play-state: running;
+        // }
+        transition: 0.5s * 1.5;
         &:hover {
-         color: white;
-         box-shadow: 0px 25px 25px 0px rgba(255, 255, 255, 0.993);
+        transform: rotate(180deg * 2);
         }
+   
     }
     &__text {
         margin-right: 20px;
@@ -65,7 +75,20 @@
         border: 2px solid white;
         padding: 8px;
     }
-
+    &__name {
+        padding: 4px;
+        font-size: 18px;
+        font-weight: 600;
+    //    background-color: $bright-blue;
+    //    color: white;
+    }
+    &__time {
+        padding: 4px;
+        font-size: 18px;
+        font-weight: 600;
+        // background-color: $bright-blue;
+        // color: white;
+    }
     @include tablet {
         padding: 16px 24px;
     }
@@ -75,4 +98,4 @@
     @include desktop {
         padding: 16px 120px;
     }
- }
+}

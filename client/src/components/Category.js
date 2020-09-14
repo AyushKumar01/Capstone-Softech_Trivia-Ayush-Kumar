@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Header from './Header';
-const API_URL = process.env.API_URL || "http://localhost:5000";
+import * as Constant from './Constants';
 
 class Category extends Component {
     state = {
@@ -21,8 +21,15 @@ class Category extends Component {
       }
   
     getCategories = () => {
+      let token = Constant.token; 
+        if(!token){
+            token = localStorage.getItem('jwt_token');
+        }
         return axios
-          .get(`${API_URL}/category`)
+          .get(`${Constant.API_URL}/category`, {
+            headers: {
+              authorization: `${token}`
+            }})
     }
   
     render() {

@@ -15,16 +15,30 @@
     }
   }
   
+  @mixin flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  @mixin flexSpaceBetween {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  @mixin flexDirectionColum {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
-//   @mixin grid ($cols, $mgn) {
-//     float: left;
-//     margin-right: $mgn;
-//     margin-bottom: $mgn;
-//     width: ((100% - (($cols - 1) * $mgn)) / $cols );
+  @keyframes rotate {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 
-//     &:nth-child(#{$cols}n) {
-//         margin-right: 0;
-//     }
-    
-// }
   

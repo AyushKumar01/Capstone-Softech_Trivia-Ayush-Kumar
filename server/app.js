@@ -1,6 +1,7 @@
 const express = require("express");
 const loginRoute = require("./routes/loginRoutes");
 const categoryRoute = require("./routes/categoryRoutes");
+const commentRoute = require("./routes/commentRoutes");
 require('dotenv').config();
 const { PORT, BACKEND_URL } = process.env;
 
@@ -12,4 +13,5 @@ app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use("/login", loginRoute);
 app.use("/category", categoryRoute);
+app.use("/comment", commentRoute);
 app.listen(PORT, console.log(`${BACKEND_URL}:${PORT}`));

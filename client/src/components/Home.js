@@ -1,45 +1,68 @@
-import React from 'react'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import About from './About';
 import Header from './Header';
-// import { Link } from 'react-router-dom';
+import axios from 'axios';
+import * as Constant from './Constants';
+import { format } from 'timeago.js';
 
-function Home() {
-    return (
-        <>
-            <Header />
-            <div className="nav-comment">
-                <div className="nav">
-                    <div className="nav__text">PLAY&nbsp;&nbsp;<i className="far fa-hand-point-right  nav__text-icon"></i></div>
-                    <div className="nav__image"></div>
+const url = Constant.API_URL;
+
+class Home extends Component {
+    state = {
+       comments: []     
+    }
+  
+    async componentDidMount() {
+        try {
+            const { data } = await this.getComment();
+            this.setState({
+            comments: data.comment && data.comment.sort(function(a, b){ return new Date(b.comment_at) - new Date(a.comment_at) })
+            });
+        } catch (error) {
+        console.log(error);
+        }
+    }
+    
+    getComment = () => {
+        let token = Constant.token; 
+        if(!token){
+            token = localStorage.getItem('jwt_token');
+        }
+        return axios
+        .get(`${url}/comment`, {
+            headers: {
+                authorization: `${token}`
+        }})   
+    }
+    
+    render() {
+        const { comments } = this.state;
+        return (
+            <>
+                <Header />
+                <div className="nav-comment">
+                    <div className="nav">
+                        <div className="nav__text">PLAY&nbsp;&nbsp;<i className="far fa-hand-point-right  nav__text-icon"></i></div>
+                        <Link to="/category"><div className="nav__image"></div></Link>
+                    </div>
+                    <About />
                 </div>
-                <About />
-            </div>
-            <div className="main-comment">
-                <div className="main-comment__wrapper">
-                    <div className="main-comment__top">
-                        <p className="main-comment__name">NAME</p>
-                        <p className="main-comment__time">TIME</p>
+                <div className="main-comment">
+                {comments && comments.map((comment) => 
+                    <div className="main-comment__wrapper" key={comment.id}>
+                        <div className="main-comment__top">
+                            <p className="main-comment__name">{comment.username}</p>
+                            <p className="main-comment__time">{format(comment.comment_at)}</p>
+                        </div>
+                        <div className="main-comment__bottom">{comment.comment}
+                        </div>
                     </div>
-                    <div className="main-comment__bottom">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Doloribus repellat nulla deserunt, vitae eos aliquid facilis 
-                        cupiditate iste, delectus quasi corrupti quaerat in.
-                    </div>
+                )}
                 </div>
-                <div className="main-comment__wrapper">
-                    <div className="main-comment__top">
-                        <p className="main-comment__name">NAME</p>
-                        <p className="main-comment__time">TIME</p>
-                    </div>
-                    <div className="main-comment__bottom">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Doloribus repellat nulla deserunt, vitae eos aliquid facilis 
-                        cupiditate iste, delectus quasi corrupti quaerat in.
-                    </div>
-                </div>
-            </div>
-        </>
-    )
+            </>
+        )
+    }
 }
 
 export default Home
