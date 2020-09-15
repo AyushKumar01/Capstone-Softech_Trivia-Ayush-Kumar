@@ -70,10 +70,10 @@ export default class Quiz extends Component {
 
     render() {
         const { questionName, multipleChoice, answer } = this.state.selectedQuestion;
-        const { showButton, questionAnswered, score } = this.state;
+        const { showButton, questionAnswered, score, questions, number } = this.state;
 
         let showSubmit = false;
-        if(this.state.number === this.state.questions.length){
+        if(questions && number === questions.length){
             showSubmit = true;
         }
         return (
@@ -84,13 +84,13 @@ export default class Quiz extends Component {
                 </div>
                 <div className="quiz__wrapper">
                     <div className="quiz__card-head">
-                        <h3>Question {this.state.number}/{this.state.questions.length}</h3>
+                        <h3>Question {number}/{questions && questions.length}</h3>
                         <h3 className="quiz__card-heading"> {questionName}</h3>
                     </div>
                     <Answer multipleChoice={multipleChoice} correctAnswer={answer} increaseScore={this.increaseScore} 
                             showButton={this.handleShowButton} isAnswered={questionAnswered}/>   
                     {showSubmit && showButton === true ? (
-                        <Link to={{pathname:'/score', aboutProps:{score: score}}} ><button className="quiz__btn" onClick={this.submit}>SUBMIT</button></Link>
+                        <Link to={{pathname:'/score', aboutProps:{score: score, totalQuestion: questions.length}}} ><button className="quiz__btn" onClick={this.submit}>SUBMIT</button></Link>
                     ) :
                     (showButton ? <button className="quiz__btn" onClick={this.nextQuestionHandler}>NEXT QUESTION</button> : "")
                     }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import LogOutBtn from './LogOutBtn';
 import * as Constant from './Constants';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 const url = Constant.API_URL;
 class Score extends Component {
     state = {
@@ -21,6 +22,7 @@ class Score extends Component {
         }
 
         const userObj = {
+            userId: Constant.getUserId(),
             username: Constant.getUsername(),
             comment: comment
         };
@@ -48,7 +50,26 @@ class Score extends Component {
     
     render() {
         const score = this.props.location.aboutProps && this.props.location.aboutProps.score;
-        console.log(this.props.location.aboutProps);
+        const totalQuestion = this.props.location.aboutProps && this.props.location.aboutProps.totalQuestion;
+        
+        // const { score, totalQuestion } = this.props.location.aboutProps;
+        
+        let scoreImage = ""; let scoreResult = "";
+        const percentage = score * 100 /totalQuestion;
+        if(percentage < 50){
+            scoreResult = "Better luck next time";
+            scoreImage = 'fas fa-thumbs-down';
+        }else if(percentage >= 50 && percentage < 80){
+            scoreResult = "Keep it up";
+            scoreImage = 'fas fa-thumbs-up';
+        }else if(percentage >= 80 && percentage <= 100){
+            scoreResult = "Awesome";
+            scoreImage = 'fas fa-trophy';
+        }else{
+            scoreResult = "-----";
+            scoreImage = 'fab fa-playstation';
+        }
+        
         const { commentErr } = this.state.errors;
         let username = Constant.getUsername();
         return (
@@ -59,13 +80,15 @@ class Score extends Component {
                         <h1 className="final__score-text">Your Score Is</h1>
                         <h2 className="final__score-count">[{score}]</h2>
                         <div className="final__score-btn">
-                            <button className="final__score-playAgain">PLAY AGAIN</button>
-                            <LogOutBtn  className="final__score-logOut" text="Log Out" />
+                            <Link to={"/category"}>
+                                <button className="final__score-playAgain">PLAY AGAIN</button>
+                            </Link>
+                            <LogOutBtn className="final__score-logOut" text="Log Out" />
                         </div>
                     </div>
                     <div className="final__score-lower">
-                        <div className="final__score-icon"><i className='fas fa-thumbs-up'></i></div>
-                        <div className="final__score-greet">Great job</div>
+                        <div className="final__score-icon"><i className={scoreImage}></i></div>
+                        <div className="final__score-greet">{scoreResult}</div>
                     </div>
                 </div>
                 <form className="comment__form" onSubmit={this.commentSubmit}>
@@ -77,14 +100,6 @@ class Score extends Component {
             </div>
         )
     }
-
-    // getUsername() {
-    //     let username = "";
-    //     if (localStorage.getItem('username')) {
-    //         username = localStorage.getItem('username');
-    //     }
-    //     return username;
-    // }
 }
 
 export default Score;

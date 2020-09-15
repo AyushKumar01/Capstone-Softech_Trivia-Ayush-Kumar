@@ -16,8 +16,12 @@ class Home extends Component {
     async componentDidMount() {
         try {
             const { data } = await this.getComment();
+            if(data.error && data.error.name === "TokenExpiredError"){
+                Constant.logoutUser(true);
+                return;
+            }
             this.setState({
-            comments: data.comment && data.comment.sort(function(a, b){ return new Date(b.comment_at) - new Date(a.comment_at) })
+                comments: data.comment && data.comment.sort(function(a, b){ return new Date(b.comment_at) - new Date(a.comment_at) })
             });
         } catch (error) {
         console.log(error);
@@ -33,7 +37,10 @@ class Home extends Component {
         .get(`${url}/comment`, {
             headers: {
                 authorization: `${token}`
-        }})   
+            }}, {
+                params: {
+                    count: 2
+                }});   
     }
     
     render() {

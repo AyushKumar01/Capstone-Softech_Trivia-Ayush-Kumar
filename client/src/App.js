@@ -5,6 +5,7 @@ import Category from './components/Category';
 import Quiz from './components/Quiz';
 import Home from './components/Home';
 import Score from './components/Score';
+import Comment from './components/Comment';
 import NotFound from './components/NotFound';
 // import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -21,6 +22,7 @@ class App extends Component {
         <Route path="/category" component={Category} exact />
         <Route path="/category/:id" component={Quiz} exact />
         <Route path="/score" component={Score} exact />
+        <Route path="/comment" component={Comment} exact />
         <Route path="/*" component={NotFound} />
       </Switch>
     </BrowserRouter>

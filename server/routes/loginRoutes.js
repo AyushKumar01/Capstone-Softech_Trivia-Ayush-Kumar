@@ -22,7 +22,7 @@ router
     .fetch()
     .then((login) => {
       const token = jwt.sign({ username }, JWT_SECRET, {
-            expiresIn: '30min',
+            expiresIn: '90min',
           });
         res.json({ status: 200, result: {"token": token, "username": username, "userId": login.id }});
     }).catch(() => {res.status(400).json({ error: 'user details are invalid' });

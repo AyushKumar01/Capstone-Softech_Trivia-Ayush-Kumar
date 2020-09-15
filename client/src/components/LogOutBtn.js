@@ -1,9 +1,20 @@
-import React from 'react'
+import React, { Component } from 'react';
+import * as Constant from './Constants';
 
-function LogOutBtn(props) {
-    return (
-    <button className={props.className} type="submit">{props.text}</button>
-    )
+class LogOutBtn extends Component {
+    logout = () => {
+        Constant.logoutUser();
+        // this.props.history.push("/");
+        window.location.href = '/';
+    }
+
+    render() {
+        return (
+            <>
+            <button className={this.props.className} onClick={this.logout}>{this.props.text}</button>
+            </>
+        )   
+    }
 }
 
 export default LogOutBtn;
