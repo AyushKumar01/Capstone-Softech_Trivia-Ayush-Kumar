@@ -34,13 +34,11 @@ class Home extends Component {
             token = localStorage.getItem('jwt_token');
         }
         return axios
-        .get(`${url}/comment`, {
+        .get(`${url}/comment?count=2`, {
             headers: {
-                authorization: `${token}`
-            }}, {
-                params: {
-                    count: 2
-                }});   
+                authorization: `BEARER ${token}`
+            }
+        });   
     }
     
     render() {

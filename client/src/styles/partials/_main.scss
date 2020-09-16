@@ -1,13 +1,5 @@
 
-// h1 {
-//     color: red;
-// }
 
-body {
-    // background-color: rgb(71, 71, 150);
-    background-color: #0084da;
-    // margin: auto 16px;
-}
 .main-welcome {
    display: none;
     @include tablet {
@@ -24,10 +16,6 @@ body {
 
 .main-wrapper {
     margin: 16px 16px;
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-    // align-items: center;
     @include tablet {
         display: flex;
         margin: 6rem 4rem;
@@ -36,6 +24,11 @@ body {
     @include desktop {
         margin: 8rem 10rem;
         justify-content: space-between;
+    }
+}
+.main-wrapper-signUp {
+    @include desktop {
+        margin: 6rem 10rem;
     }
 }
 
@@ -105,7 +98,6 @@ body {
     &__form-buttons{
         display: flex;
         flex-direction: column;
-        // justify-content: space-between;
     }
     &__form-btn {
         background-color: $soft-black;

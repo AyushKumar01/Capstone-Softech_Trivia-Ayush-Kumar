@@ -18,6 +18,10 @@ export default class Quiz extends Component {
     async componentDidMount() {
         try {
             const { data } = await this.getQuestionsById();
+            if(data.error && data.error.name === "TokenExpiredError"){
+                Constant.logoutUser(true);
+                return;
+            }
             this.setState({
                 questions: data.questions
             }); 
@@ -29,10 +33,14 @@ export default class Quiz extends Component {
     
     getQuestionsById = () => {
         let id = this.props.match.params.id;
+        let token = Constant.token; 
+        if(!token){
+            token = localStorage.getItem('jwt_token');
+        }
         return axios
         .get(`${Constant.API_URL}/category/${id}`, {
             headers: {
-              authorization: `${Constant.token}`
+              authorization: `BEARER ${token}`
             }})   
     }
 
@@ -69,33 +77,41 @@ export default class Quiz extends Component {
     }
 
     render() {
-        const { questionName, multipleChoice, answer } = this.state.selectedQuestion;
-        const { showButton, questionAnswered, score, questions, number } = this.state;
-
-        let showSubmit = false;
-        if(questions && number === questions.length){
-            showSubmit = true;
-        }
-        return (
-            <div className="quiz">
-                <div className="quiz__timer">
-                    <div className="quiz__timer-text"><span>Count Down</span>&nbsp;<span>00</span></div>
-                    <div><img className="quiz__timer-image" src={Logo} alt="Logo" /></div>
-                </div>
-                <div className="quiz__wrapper">
-                    <div className="quiz__card-head">
-                        <h3>Question {number}/{questions && questions.length}</h3>
-                        <h3 className="quiz__card-heading"> {questionName}</h3>
+        if(this.state.selectedQuestion){
+            const { questionName, multipleChoice, answer } = this.state.selectedQuestion;
+            const { showButton, questionAnswered, score, questions, number } = this.state;
+    
+            let showSubmit = false;
+            if(questions && number === questions.length){
+                showSubmit = true;
+            }
+            return (
+                <div className="quiz">
+                    <div className="quiz__timer">
+                        <div className="quiz__timer-text"><span>Count Down</span>&nbsp;<span>00</span></div>
+                        <div><img className="quiz__timer-image" src={Logo} alt="Logo" /></div>
                     </div>
-                    <Answer multipleChoice={multipleChoice} correctAnswer={answer} increaseScore={this.increaseScore} 
-                            showButton={this.handleShowButton} isAnswered={questionAnswered}/>   
-                    {showSubmit && showButton === true ? (
-                        <Link to={{pathname:'/score', aboutProps:{score: score, totalQuestion: questions.length}}} ><button className="quiz__btn" onClick={this.submit}>SUBMIT</button></Link>
-                    ) :
-                    (showButton ? <button className="quiz__btn" onClick={this.nextQuestionHandler}>NEXT QUESTION</button> : "")
-                    }
+                    <div className="quiz__wrapper">
+                        <div className="quiz__card-head">
+                            <h3>Question {number}/{questions && questions.length}</h3>
+                            <h3 className="quiz__card-heading"> {questionName}</h3>
+                        </div>
+                        <Answer multipleChoice={multipleChoice} correctAnswer={answer} increaseScore={this.increaseScore} 
+                                showButton={this.handleShowButton} isAnswered={questionAnswered}/>   
+                        {showSubmit && showButton === true ? (
+                            <Link to={{pathname:'/score', aboutProps:{score: score, totalQuestion: questions.length}}} ><button className="quiz__btn" onClick={this.submit}>SUBMIT</button></Link>
+                        ) :
+                        (showButton ? <button className="quiz__btn" onClick={this.nextQuestionHandler}>NEXT QUESTION</button> : "")
+                        }
+                    </div>
                 </div>
-            </div>
-        )
+            )
+        }else{
+            return (
+                <div className="quiz">
+                    No question in this category
+                </div>
+            )
+        }
     }
 };

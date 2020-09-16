@@ -9,16 +9,22 @@ class Comment extends Component {
     state = {
     comments: []     
 }
+
 async componentDidMount() {
     try {
         const { data } = await this.getComment();
+        if(data.error && data.error.name === "TokenExpiredError"){
+            Constant.logoutUser(true);
+            return;
+        }
         this.setState({
         comments: data.comment && data.comment.sort(function(a, b){ return new Date(b.comment_at) - new Date(a.comment_at) })
         });
     } catch (error) {
-    console.log(error);
+        console.log(error);
     }
 }
+
 getComment = () => {
     let token = Constant.token; 
     if(!token){
@@ -27,7 +33,7 @@ getComment = () => {
     return axios
     .get(`${url}/comment`, {
         headers: {
-            authorization: `${token}`
+            authorization: `BEARER ${token}`
     }})   
 }
     render() {

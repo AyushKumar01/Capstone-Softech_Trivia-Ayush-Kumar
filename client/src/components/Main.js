@@ -100,7 +100,7 @@ export class Main extends Component {
                 {passwordErr && passwordErr.length > 0 && <label style={{color: 'red'}}>{passwordErr}</label>}
                 <div className="login__form-buttons">
                   <button className="login__form-btn" type="submit">Login</button>
-                  {loginErr && loginErr.length > 0 && <label style={{color: 'red'}}>{loginErr}</label>}
+                  {loginErr && loginErr.length > 0 && <label style={{color: 'white'}}>{loginErr}</label>}
                   <Link to='/signUp'><button className='login__signup-btn'>SignUp</button></Link>
                 </div>
               </form>

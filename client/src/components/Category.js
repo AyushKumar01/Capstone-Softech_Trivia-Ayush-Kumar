@@ -12,6 +12,10 @@ class Category extends Component {
     async componentDidMount() {
         try {
             const { data } = await this.getCategories();
+            if(data.error && data.error.name === "TokenExpiredError"){
+              Constant.logoutUser(true);
+              return;
+            }
             this.setState({
               categories: data.category
             }); 
@@ -28,7 +32,7 @@ class Category extends Component {
         return axios
           .get(`${Constant.API_URL}/category`, {
             headers: {
-              authorization: `${token}`
+              authorization: `BEARER ${token}`
             }})
     }
   
@@ -50,7 +54,7 @@ class Category extends Component {
                     </div>
                     <div className="category__photos">
                     {categories && categories.map((cat) => (
-                        <Link key={cat.id} to={"/category/:id"}><img className="category__photos-size" src={`/images/${cat.imageName}`} alt="link" /></Link>
+                        <Link key={cat.id} to={`/category/${cat.id}`}><img className="category__photos-size" src={`/images/${cat.imageName}`} alt="link" /></Link>
                     ))}
                     </div>
                 </div>

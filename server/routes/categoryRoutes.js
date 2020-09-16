@@ -10,7 +10,7 @@ const { JWT_SECRET } = process.env;
 router
   .route("/")
   .get((req, res) => {
-    const token = req.headers.authorization;
+    const token = req.headers.authorization && req.headers.authorization.split(' ')[1];;
     jwt.verify(token, JWT_SECRET, (err, data) => {
       if(err){
         return res.json({
@@ -33,7 +33,7 @@ router
   //   requiredProperties: ['id']
   //   });
   // }
-    const token = req.headers.authorization;
+    const token = req.headers.authorization && req.headers.authorization.split(' ')[1];;
     jwt.verify(token, JWT_SECRET, (err, data) => {
       if(err){
         return res.json({

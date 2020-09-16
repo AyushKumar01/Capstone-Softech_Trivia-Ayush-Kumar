@@ -11,15 +11,15 @@ const { JWT_SECRET } = process.env;
 router
   .route("/")
   .get((req, res) => {
-    const token = req.headers.authorization;
+    const token = req.headers.authorization && req.headers.authorization.split(' ')[1];;
     jwt.verify(token, JWT_SECRET, (err, data) => {
       if(err){
         return res.json({
           error: err,
         });
       }else{
-        if(req.body.count){
-          count = req.body.count;
+        if(req.query.count){
+          count = req.query.count;
           bookshelf.knex('comment').orderBy('comment_at', 'DESC').limit(count).then(function(rvw) {
             res.json({ status: 200, comment : rvw });
           }).catch(() => {
@@ -39,7 +39,7 @@ router
     });
   })
   .post((req, res) => {
-    const token = req.headers.authorization;
+    const token = req.headers.authorization && req.headers.authorization.split(' ')[1];;
     jwt.verify(token, JWT_SECRET, (err, data) => {
       if(err){
         return res.json({

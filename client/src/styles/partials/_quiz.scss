@@ -1,15 +1,9 @@
 .quiz{
     background-color: rgb(231, 229, 229);
     margin: 16px 16px;
-    // margin-top: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    // // &__timer{
-    // //     display: flex;
-    // //     align-items: center;
-        
-    // // }
     &__timer-text{
 
         display: flex;
@@ -17,9 +11,6 @@
         justify-content: center;
         height: 40px;
         width: 150px;
-        // height: 100px;
-        // width: 150px;
-        // border-radius: 50%;
         color: white;
         margin: 15px 0;
         background-color: $soft-black;
@@ -28,23 +19,9 @@
     &__timer-image{
         display: none;
         margin: 15px 0;
-        
-
         animation: rotate 2s linear infinite;
         animation-play-state: running;
-    // &:hover {
-    //   animation-play-state: running;
-    // }
-
-       
     }
-    // &__wrapper {
-    //     display: flex;
-    //     flex-direction: column;
-    //     // align-items: center;
-    //     background-color: white;
-    //     width: 60vw;
-    // }
     &__card-head {
         display: flex;
         flex-direction: column;
@@ -57,16 +34,10 @@
         width: 90vw;
         background-color:$bright-blue;
     }
-
-    // &__answer {
-    //     display: flex;
-    //     flex-direction: column;
-    // }
     &__card {
         background-color: #fff;
         border: 2px solid #0094da;
         min-height: 70px;
-        // width: 48%;
         width: 100%;
         display: flex;
         margin-bottom: 30px;
@@ -74,37 +45,23 @@
         border-color .3s ease, 
         transform .3s ease;
         cursor: pointer;
-        // display: flex;
-        // align-items: center;
-        // min-height: 7.81vw;
-        // // width: 60vw;
-        // background-color: #fff;
-        // margin-top: 0.2rem;
-        // border: 2px solid $bright-blue;
-
+        &:hover {
+            transform: scale(1.03);
+            border: 3px solid #0094da;
+        }
     }
     &__card-correct {
-        // color: green;
-        border-color: green;
-        // background-color: green;
+        color: green;
+        border: 3px solid green;
     }
     &__card-wrong {
-        // color: red;
-        border-color: red;
-        // background-color: red;
+        color: red;
+        border: 3px solid red;
     }
     &__card-heading {
         margin-top: 10px;
     }
      &__card-number {
-        // justify-content: center;
-        // align-items: center;
-        // display: flex;
-        // background-color:$bright-blue;
-        // margin: 16px;
-        // height: 25px;
-        // width: 25px;
-        // text-align: center;
         background-color: #0084da;
         color: #fff;
         font-size: 30px;
@@ -134,7 +91,6 @@
         font-weight: 600;
         padding: 14px 0;
         margin: 0 auto 20px;
-        // text-transform: uppercase;
         transition: color .2s ease, background-color .2s ease;
     }
 //==============tablet======================
@@ -153,8 +109,6 @@
             width: 45%;
             margin: 18px;
         }
-
-
         &__btn {
             width: 24rem;
             border: 2px solid $soft-black;
@@ -167,13 +121,11 @@
             font-weight: 600;
             padding: 18px 0;
             margin: 0 auto 20px;
-            // text-transform: uppercase;
             transition: color .2s ease, background-color .2s ease;
         }
     }
-@include laptop {
-    // margin: 120px 120px;
-    // padding: 0 120px;
+    //=================laptop=============================
+    @include laptop {
         &__timer{
             display: flex;
             justify-content: space-between;

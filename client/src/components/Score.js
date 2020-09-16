@@ -29,9 +29,13 @@ class Score extends Component {
         axios
         .post(`${url}/comment`, userObj, {
             headers: {
-              authorization: `${Constant.token}`
+              authorization: `BEARER ${Constant.token}`
             }})
         .then((response) => {
+            if(response.error && response.error.name === "TokenExpiredError"){
+                Constant.logoutUser(true);
+                return;
+            }
             console.log('comment response', response);
             this.props.history.push("/home");
         })
