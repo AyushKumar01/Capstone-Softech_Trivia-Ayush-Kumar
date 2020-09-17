@@ -20,7 +20,7 @@ router
     .fetchAll()
     .then((question) => {
       res.status(200).json({questions : question});
-    }).catch((error) => { 
+    }).catch(() => { 
       res.status(400).json({ error: 'unable to fetch questions' });
     });
 })

@@ -263,6 +263,12 @@ ul {
   .category {
     margin: 0 12.5rem;
   }
+  .category__card-heading {
+    font-size: 2.5rem;
+  }
+  .category__card-name {
+    font-size: 1.5rem;
+  }
 }
 
 .header {
@@ -482,8 +488,6 @@ ul {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-transition: background-color .3s ease;
-  transition: background-color .3s ease;
 }
 
 .quiz__card-name {
@@ -494,8 +498,6 @@ ul {
       -ms-flex: calc(100% - 75px);
           flex: calc(100% - 75px);
   margin: auto 20px;
-  -webkit-transition: color .3s ease;
-  transition: color .3s ease;
 }
 
 .quiz__btn-link {
@@ -527,8 +529,6 @@ ul {
   font-weight: 600;
   padding: 14px 0;
   margin: 0 auto 20px;
-  -webkit-transition: color .2s ease, background-color .2s ease;
-  transition: color .2s ease, background-color .2s ease;
   cursor: pointer;
 }
 
@@ -570,8 +570,6 @@ ul {
     font-weight: 600;
     padding: 18px 0;
     margin: 0 auto 20px;
-    -webkit-transition: color .2s ease, background-color .2s ease;
-    transition: color .2s ease, background-color .2s ease;
   }
   .quiz__submit-btn {
     width: 24rem;
@@ -766,6 +764,7 @@ ul {
 .login__signup-btn--margin {
   background-color: #13182c;
   margin-top: unset;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {

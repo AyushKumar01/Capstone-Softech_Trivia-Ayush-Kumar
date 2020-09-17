@@ -7,7 +7,6 @@ import Home from './components/Home';
 import Score from './components/Score';
 import Comment from './components/Comment';
 import NotFound from './components/NotFound';
-// import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import SignUp from './components/SignUp';
 
