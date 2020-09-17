@@ -37,17 +37,17 @@ class Answer extends Component {
             className = ["", "", "", ""]
         }
 
-            return (
-                <div className="quiz__answer">
-                    {multipleChoice && multipleChoice.map((element, index) => 
-                        (
-                            <div className={ `quiz__card ${className[index]}` } onClick={this.checkAnswer} data-id={index + 1} key={index}>
-                                <span className="quiz__card-number">{header[index]}</span> <p className="quiz__card-name">{element} </p>
-                            </div> 
-                        )
-                    )}
-                </div>  
-            )
+        return (
+            <div className="quiz__answer">
+                {multipleChoice && multipleChoice.map((element, index) => 
+                    (
+                        <div className={ `quiz__card ${className[index]}` } onClick={this.checkAnswer} data-id={index + 1} key={index}>
+                            <span className="quiz__card-number">{header[index]}</span> <p className="quiz__card-name">{element} </p>
+                        </div> 
+                    )
+                )}
+            </div>  
+        )
     }
 }
 

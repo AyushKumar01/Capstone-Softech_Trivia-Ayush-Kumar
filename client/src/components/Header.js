@@ -16,8 +16,8 @@ function Header() {
             </div>
             <nav className="header__nav">
                 <ul className="header__list">
-                    <li className="header__list-item"><a className="header__list-link" href="/home">Home</a></li>
-                    <li className="header__list-item"><a className="header__list-link" href="/about">About</a></li>
+                    <li className="header__list-item"><Link className="header__list-link" to="/home">Home</Link></li>
+                    <li className="header__list-item"><Link className="header__list-link" to="/about">About</Link></li>
                     <li className="header__list-item"><Link className="header__list-link" to="/comment">Comment</Link></li>
                 </ul>
             </nav>

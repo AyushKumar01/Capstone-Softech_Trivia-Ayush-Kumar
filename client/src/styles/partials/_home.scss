@@ -3,34 +3,22 @@
         display: flex;
         flex-direction: row-reverse;
         justify-content: center;
-        padding: 40px 24px 24px;
+        padding: 2.5rem 1.5rem 1.5rem;
     }
 }
 .nav {
-    margin: 16px 16px;
-    border: 2px solid rgb(231, 229, 229);
-    padding: 16px 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flexCenter;
+    margin: 1rem;
+    border: 2px solid $spark-white;
+    padding: 1rem;
     &__image {
         background-image: url(../assets/images/logo.png);
-        height: 100px;
-        width: 100px;
+        height: 6.25rem;
+        width: 6.25rem;
         background-size: cover; 
         background-position: center;
         border-radius: 50%;
         cursor: pointer;
-        // transition-duration: 0.4s;
-        // &:hover {
-        //  color: white;
-        //  box-shadow: 0px 25px 25px 0px rgba(255, 255, 255, 0.993);
-        // }
-        // animation: rotate 2s linear infinite;
-        // animation-play-state: paused;
-        // &:hover {
-        //   animation-play-state: running;
-        // }
         transition: 0.5s * 1.5;
         &:hover {
         transform: rotate(180deg * 2);
@@ -38,15 +26,15 @@
    
     }
     &__text {
-        margin-right: 20px;
-        font-size: 20px;
-        color: white;
+        margin-right: 1.25rem;
+        font-size: 1.25rem;
+        color: $white;
         font-weight: 900;
     }
     &__text-icon {
         position: relative;
         top: 2px;
-        font-size: 35px;
+        font-size: 2.1875rem;
         color: aqua;
     }
     //===============tablet=============
@@ -56,47 +44,41 @@
 }
 
 .main-comment{
-    padding: 16px;
+    padding: 1rem;
     &__wrapper{
-       border: 2px solid white;
-       padding: 16px;
+       border: 2px solid $white;
+       padding: 1rem;
     }
     &__top {
-       display: flex;
-       justify-content: space-between;
-       align-items: center;
-       background: white;
-       padding: 4px 8px;
+      @include flexSpaceBetween;
+       background: $white;
+       padding: 0.25rem 0.5rem;
        border: 4px solid $indigo;
     }
     &__bottom {
-        color: white;
-        margin: 16px 0;
-        border: 2px solid white;
-        padding: 8px;
+        color: $white;
+        margin: 1rem 0;
+        border: 2px solid $white;
+        padding: 0.5rem;
     }
     &__name {
-        padding: 4px;
-        font-size: 18px;
+        padding: 0.25rem;
+        font-size: 1.125rem;
         font-weight: 600;
         text-transform: uppercase;
-    //    background-color: $bright-blue;
-    //    color: white;
     }
     &__time {
-        padding: 4px;
+        padding: 0.25rem;
         font-size: 18px;
         font-weight: 600;
-        // background-color: $bright-blue;
-        // color: white;
     }
     @include tablet {
-        padding: 16px 24px;
+        padding: 1rem 1.5rem;
     }
     @include laptop {
-        padding: 16px 60px;
+        padding: 1rem 3.75rem;
     }
     @include desktop {
-        padding: 16px 120px;
+        padding: 1rem 7.5rem;
     }
 }

@@ -11,6 +11,10 @@ class Score extends Component {
         }
       };
 
+    componentDidMount() {
+        Constant.checkToken();
+    }
+
     commentSubmit = (event) => {
         event.preventDefault();
         const comment = event.target.comment.value;
@@ -29,13 +33,10 @@ class Score extends Component {
         axios
         .post(`${url}/comment`, userObj, {
             headers: {
-              authorization: `BEARER ${Constant.token}`
+              authorization: `BEARER ${Constant.getToken()}`
             }})
         .then((response) => {
-            if(response.error && response.error.name === "TokenExpiredError"){
-                Constant.logoutUser(true);
-                return;
-            }
+            Constant.verifyResponse(response.error);
             console.log('comment response', response);
             this.props.history.push("/home");
         })

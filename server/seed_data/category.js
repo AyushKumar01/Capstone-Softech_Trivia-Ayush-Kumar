@@ -28,8 +28,8 @@ module.exports = [
         imageName: "python.png"
     },
     {
-        category: "DEMO",
-        imageName: "demo.jpg"
+        category: "BOOTSTRAP",
+        imageName: "bootstrap.jpg"
     },
     {
         category: "MYSQL",

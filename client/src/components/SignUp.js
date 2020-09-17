@@ -19,45 +19,45 @@ export class SignUp extends Component {
     };
     
     componentDidMount() {
-      if (Constant.token) {
+      if (Constant.getToken()) {
         this.props.history.push("/home");
       }
     }
 
     signup = (event) => {
-    event.preventDefault();
-    const { firstName, lastName, username, email, password } = event.target;
+      event.preventDefault();
+      const { firstName, lastName, username, email, password } = event.target;
 
-    const errors = this.validate(firstName.value, lastName.value, email.value, username.value, password.value);
-    if (errors.firstNameErr || errors.lastNameErr || errors.emailErr || errors.usernameErr || errors.passwordErr) {
-      this.setState({ errors : errors });
-      return;
-    }
-
-    const userObj = {
-        firstName: firstName.value,
-        lastName: lastName.value,
-        email: email.value,
-        username: username.value,
-        password: password.value
-    };
-    axios
-    .post(`${url}/login/signup`, userObj
-    )
-    .then((response) => {
-        console.log('signup response', response);
-        this.props.history.push("/");
-    })
-    .catch((error) => {
-      if (error.response) {
-        this.setState({
-          errors: {
-            signupErr : error.response.data.error
-          }
-        }) 
+      const errors = this.validate(firstName.value, lastName.value, email.value, username.value, password.value);
+      if (errors.firstNameErr || errors.lastNameErr || errors.emailErr || errors.usernameErr || errors.passwordErr) {
+        this.setState({ errors : errors });
+        return;
       }
-      console.log(error.response);
-    });
+
+      const userObj = {
+          firstName: firstName.value,
+          lastName: lastName.value,
+          email: email.value,
+          username: username.value,
+          password: password.value
+      };
+      axios
+      .post(`${url}/login/signup`, userObj
+      )
+      .then((response) => {
+          console.log('signup response', response);
+          this.props.history.push("/");
+      })
+      .catch((error) => {
+        if (error.response) {
+          this.setState({
+            errors: {
+              signupErr : error.response.data.error
+            }
+          }) 
+        }
+        console.log(error.response);
+      });
     };
 
     validate = (firstName, lastName, email, username, password) => {
@@ -92,22 +92,22 @@ export class SignUp extends Component {
             <form onSubmit={this.signup} className="login__form">
               <label className="login__form-label">FIRST NAME</label><br/> 
               <input className="login__form-userName" type="text" name="firstName" placeholder="Enter Name" /><br/>
-              {firstNameErr && firstNameErr.length > 0 && <label style={{color: 'red'}}>{firstNameErr}</label>}<br/>
+              {firstNameErr && firstNameErr.length > 0 && <label className="login__form-label-color">{firstNameErr}</label>}<br/>
               <label className="login__form-label">LAST NAME</label><br/> 
               <input className="login__form-userName" type="text" name="lastName" placeholder="Enter Name" /><br/>
-              {lastNameErr && lastNameErr.length > 0 && <label style={{color: 'red'}}>{lastNameErr}</label>}<br/>
+              {lastNameErr && lastNameErr.length > 0 && <label className="login__form-label-color">{lastNameErr}</label>}<br/>
               <label className="login__form-label">USER NAME</label><br/> 
               <input className="login__form-userName" type="text" name="username" placeholder="Enter Name" /><br/>
-              {usernameErr && usernameErr.length > 0 && <label style={{color: 'red'}}>{usernameErr}</label>}<br/>
+              {usernameErr && usernameErr.length > 0 && <label className="login__form-label-color">{usernameErr}</label>}<br/>
               <label className="login__form-label">EMAIL</label><br/> 
               <input className="login__form-userName" type="text" name="email" placeholder="Enter Name" /><br/>
-              {emailErr && emailErr.length > 0 && <label style={{color: 'red'}}>{emailErr}</label>}<br/>
+              {emailErr && emailErr.length > 0 && <label className="login__form-label-color">{emailErr}</label>}<br/>
               <label className="login__form-label">ENTER PASSWORD</label><br/> 
               <input className="login__form-password" type="password" name="password" placeholder="Enter Password" /><br/>
-              {passwordErr && passwordErr.length > 0 && <label style={{color: 'red'}}>{passwordErr}</label>}<br/>
+              {passwordErr && passwordErr.length > 0 && <label className="login__form-label-color">{passwordErr}</label>}<br/>
               <div className="login__form-buttons">
                 <button className="login__form-btn" type="submit">SignUp</button>
-                {signupErr && signupErr.length > 0 && <label style={{color: 'red'}}>{signupErr}</label>}
+                {signupErr && signupErr.length > 0 && <label className="login__form-label-color">{signupErr}</label>}
                 </div>
             </form>
           </div>

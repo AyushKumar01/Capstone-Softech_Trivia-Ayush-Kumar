@@ -4,7 +4,6 @@ import * as Constant from './Constants';
 class LogOutBtn extends Component {
     logout = () => {
         Constant.logoutUser();
-        // this.props.history.push("/");
         window.location.href = '/';
     }
 

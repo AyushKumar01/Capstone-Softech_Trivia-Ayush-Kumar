@@ -18,7 +18,7 @@ export class Main extends Component {
       };
     
       componentDidMount() {
-        if (Constant.token) {
+        if (Constant.getToken()) {
           this.setState({
             isLoggedIn: true
           });
@@ -74,7 +74,7 @@ export class Main extends Component {
         errors.usernameErr = "";
         errors.passwordErr = "";
         errors.loginErr = "";
-        const errorMessage = "This field is required";
+        const errorMessage = "*This field is required";
         if (username.length === 0) {
           errors.usernameErr = errorMessage;
         }
@@ -94,14 +94,14 @@ export class Main extends Component {
               <form onSubmit={this.login} className="login__form">
                 <label className="login__form-label">USER NAME</label><br/> 
                 <input className="login__form-userName" type="text" name="username" placeholder="Enter Name" /><br/>
-                {usernameErr && usernameErr.length > 0 && <label style={{color: 'red'}}>{usernameErr}</label>}
+                {usernameErr && usernameErr.length > 0 && <label className="login__form-label-color">{usernameErr}</label>}<br/>
                 <label className="login__form-label">ENTER PASSWORD</label><br/> 
                 <input className="login__form-password" type="password" name="password" placeholder="Enter Password" /><br/>
-                {passwordErr && passwordErr.length > 0 && <label style={{color: 'red'}}>{passwordErr}</label>}
+                {passwordErr && passwordErr.length > 0 && <label className="login__form-label-color">{passwordErr}</label>}<br/>
                 <div className="login__form-buttons">
                   <button className="login__form-btn" type="submit">Login</button>
-                  {loginErr && loginErr.length > 0 && <label style={{color: 'white'}}>{loginErr}</label>}
-                  <Link to='/signUp'><button className='login__signup-btn'>SignUp</button></Link>
+                  {loginErr && loginErr.length > 0 && <label className="login__form-label-color">{loginErr}</label>}
+                  <Link className='login__signup-btn' to='/signUp'><button className='login__signup-btn login__signup-btn--margin '>SignUp</button></Link>
                 </div>
               </form>
             </div>

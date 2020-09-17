@@ -16,8 +16,8 @@ export const getUserId = () => {
     return userId;
 }
 
-export const logoutUser = (showAlert) => {
-    if(showAlert) alert("session expired");
+export const logoutUser = (showAlert, errorMessage) => {
+    if(showAlert) alert(errorMessage);
     
     if (localStorage.getItem('userId')) {
         localStorage.removeItem('userId');
@@ -28,8 +28,27 @@ export const logoutUser = (showAlert) => {
     if (localStorage.getItem('jwt_token')) {
         localStorage.removeItem('jwt_token');
     }
+    window.location.href = '/';
 }
 
 export const validEmailRegex = RegExp(/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i);
 
-export const token = localStorage.getItem('jwt_token');
+export function getToken(){
+    return localStorage.getItem('jwt_token');
+} 
+
+export function verifyResponse(error){
+    if(error){
+        if(error.name === "TokenExpiredError"){
+            logoutUser(true, "Session expired");
+        }else if(error.name === "JsonWebTokenError"){
+           logoutUser(true, "Either the token is blank or there is any error with the token");
+        }
+    }
+}
+
+export function checkToken(){
+    if (!localStorage.getItem('jwt_token')) {
+        window.location.href = '/';
+    }
+}

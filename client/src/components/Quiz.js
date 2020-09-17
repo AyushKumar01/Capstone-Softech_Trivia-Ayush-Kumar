@@ -18,10 +18,7 @@ export default class Quiz extends Component {
     async componentDidMount() {
         try {
             const { data } = await this.getQuestionsById();
-            if(data.error && data.error.name === "TokenExpiredError"){
-                Constant.logoutUser(true);
-                return;
-            }
+            Constant.verifyResponse(data.error);
             this.setState({
                 questions: data.questions
             }); 
@@ -33,14 +30,10 @@ export default class Quiz extends Component {
     
     getQuestionsById = () => {
         let id = this.props.match.params.id;
-        let token = Constant.token; 
-        if(!token){
-            token = localStorage.getItem('jwt_token');
-        }
         return axios
         .get(`${Constant.API_URL}/category/${id}`, {
             headers: {
-              authorization: `BEARER ${token}`
+              authorization: `BEARER ${Constant.getToken()}`
             }})   
     }
 
@@ -67,10 +60,6 @@ export default class Quiz extends Component {
             number: this.state.number + 1
         });
     }
-
-    // nextQuestionHandler = () => {
-    //     this.pushData(this.state.number);
-    // }
 
     increaseScore = () => {
         this.setState({score: this.state.score + 1});
@@ -99,7 +88,8 @@ export default class Quiz extends Component {
                         <Answer multipleChoice={multipleChoice} correctAnswer={answer} increaseScore={this.increaseScore} 
                                 showButton={this.handleShowButton} isAnswered={questionAnswered}/>   
                         {showSubmit && showButton === true ? (
-                            <Link to={{pathname:'/score', aboutProps:{score: score, totalQuestion: questions.length}}} ><button className="quiz__btn" onClick={this.submit}>SUBMIT</button></Link>
+                            <Link to={{pathname:'/score', aboutProps:{score: score, totalQuestion: questions.length}}} className="quiz__btn-link quiz__btn" >
+                                <button className="quiz__submit-btn" onClick={this.submit}>SUBMIT</button></Link>
                         ) :
                         (showButton ? <button className="quiz__btn" onClick={this.nextQuestionHandler}>NEXT QUESTION</button> : "")
                         }

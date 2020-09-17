@@ -12,10 +12,7 @@ class Category extends Component {
     async componentDidMount() {
         try {
             const { data } = await this.getCategories();
-            if(data.error && data.error.name === "TokenExpiredError"){
-              Constant.logoutUser(true);
-              return;
-            }
+            Constant.verifyResponse(data.error);
             this.setState({
               categories: data.category
             }); 
@@ -25,14 +22,10 @@ class Category extends Component {
       }
   
     getCategories = () => {
-      let token = Constant.token; 
-        if(!token){
-            token = localStorage.getItem('jwt_token');
-        }
         return axios
           .get(`${Constant.API_URL}/category`, {
             headers: {
-              authorization: `BEARER ${token}`
+              authorization: `BEARER ${Constant.getToken()}`
             }})
     }
   
@@ -45,7 +38,8 @@ class Category extends Component {
                 <div className="category__wrapper">
                     <div className="category__card-head"><h2 className="category__card-heading">Pick Category</h2></div>
                     {categories && categories.map((cat) => (
-                        <div key={cat.id} className="category__card"><Link to={`/category/${cat.id}`} className="category__card-link"><p className="category__card-name">{cat.category}</p></Link></div>
+                        <Link to={`/category/${cat.id}`} className="category__card-link" key={cat.id} >
+                          <div className="category__card"><p className="category__card-name">{cat.category}</p></div></Link>
                     ))}
                 </div>
                 <div className="category__container">

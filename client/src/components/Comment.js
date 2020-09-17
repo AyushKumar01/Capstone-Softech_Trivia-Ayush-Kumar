@@ -11,12 +11,9 @@ class Comment extends Component {
 }
 
 async componentDidMount() {
-    try {
+    try { 
         const { data } = await this.getComment();
-        if(data.error && data.error.name === "TokenExpiredError"){
-            Constant.logoutUser(true);
-            return;
-        }
+        Constant.verifyResponse(data.error);    
         this.setState({
         comments: data.comment && data.comment.sort(function(a, b){ return new Date(b.comment_at) - new Date(a.comment_at) })
         });
@@ -26,14 +23,10 @@ async componentDidMount() {
 }
 
 getComment = () => {
-    let token = Constant.token; 
-    if(!token){
-        token = localStorage.getItem('jwt_token');
-    }
     return axios
     .get(`${url}/comment`, {
         headers: {
-            authorization: `BEARER ${token}`
+            authorization: `BEARER ${Constant.getToken()}`
     }})   
 }
     render() {
