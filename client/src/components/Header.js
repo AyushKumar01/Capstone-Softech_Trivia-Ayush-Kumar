@@ -17,7 +17,6 @@ function Header() {
             <nav className="header__nav">
                 <ul className="header__list">
                     <li className="header__list-item"><Link className="header__list-link" to="/home">Home</Link></li>
-                    <li className="header__list-item"><Link className="header__list-link" to="/about">About</Link></li>
                     <li className="header__list-item"><Link className="header__list-link" to="/comment">Comment</Link></li>
                 </ul>
             </nav>

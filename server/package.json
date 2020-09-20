@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "server": "nodemon app.js",
+    "start": "node app.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "client": "npm start --prefix ../client",
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
     "seed": "knex seed:run"

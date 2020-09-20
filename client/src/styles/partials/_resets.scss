@@ -3,13 +3,10 @@ html, body {
     font-family: 'AvenirNext LT Pro';
     font-weight: normal;
 }
-
 * {
     margin: 0;
     padding: 0;
 }
-
-
 *,
 *::before,
 *::after
@@ -17,19 +14,8 @@ html, body {
     box-sizing: inherit;  
 }
 body {
-    background-color: #0084da;
+    background-color: $light-blue;
 }
-
 ul {
     list-style-type: none;
 }
-
-// footer {
-//     background-color: $lightBlack;
-// }
-
-// a {
-//     cursor: pointer;
-//     text-decoration: none;
-//     color: $white;
-// }

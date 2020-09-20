@@ -366,7 +366,7 @@ ul {
 
 .quiz {
   background-color: #e7e5e5;
-  margin: 16px 16px;
+  margin: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -383,23 +383,23 @@ ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 40px;
-  width: 150px;
-  color: white;
-  margin: 15px 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 2.5rem;
+  width: 9.375rem;
+  color: #ffffff;
+  margin: 0.937rem 0;
   background-color: #13182c;
-  border: 2px solid white;
+  border: 2px solid #ffffff;
 }
 
 .quiz__timer-image {
   display: none;
-  margin: 15px 0;
+  margin: 0.937rem 0;
   -webkit-animation: rotate 2s linear infinite;
           animation: rotate 2s linear infinite;
   -webkit-animation-play-state: running;
@@ -414,29 +414,29 @@ ul {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  color: white;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #ffffff;
   padding: 0.5rem;
   min-height: 12.5vw;
-  margin-bottom: 30px;
+  margin-bottom: 1.875rem;
   width: 90vw;
   background-color: #0094da;
 }
 
 .quiz__card {
   background-color: #fff;
-  border: 2px solid #0094da;
-  min-height: 70px;
+  border: 2px solid #0084da;
+  min-height: 4.375rem;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 30px;
+  margin-bottom: 1.875rem;
   -webkit-transition: color .3s ease,  border-color .3s ease,  -webkit-transform .3s ease;
   transition: color .3s ease,  border-color .3s ease,  -webkit-transform .3s ease;
   transition: color .3s ease,  border-color .3s ease,  transform .3s ease;
@@ -447,7 +447,7 @@ ul {
 .quiz__card:hover {
   -webkit-transform: scale(1.03);
           transform: scale(1.03);
-  border: 3px solid #0094da;
+  border: 3px solid #0084da;
 }
 
 .quiz__card-correct {
@@ -469,7 +469,7 @@ ul {
 }
 
 .quiz__card-heading {
-  margin-top: 10px;
+  margin-top: 0.625rem;
 }
 
 .quiz__card-number {
@@ -492,12 +492,12 @@ ul {
 
 .quiz__card-name {
   color: #0b0e21;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
   -webkit-box-flex: calc(100% - 75px);
       -ms-flex: calc(100% - 75px);
           flex: calc(100% - 75px);
-  margin: auto 20px;
+  margin: auto 1.25rem;
 }
 
 .quiz__btn-link {
@@ -508,7 +508,7 @@ ul {
   width: 18rem;
   background-color: #13182c;
   color: #fff;
-  font-size: 22px;
+  font-size: 1.375rem;
   border: none;
   outline: none;
 }
@@ -525,17 +525,16 @@ ul {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 600;
-  padding: 14px 0;
-  margin: 0 auto 20px;
-  cursor: pointer;
+  padding: 0.875rem 0;
+  margin: 0 auto 1.25rem;
 }
 
 @media screen and (min-width: 768px) {
   .quiz {
-    margin: 24px 24px;
-    padding: 0 24px;
+    margin: 1.5rem;
+    padding: 0 1.5rem;
   }
   .quiz__card-head {
     width: 93.75vw;
@@ -552,24 +551,12 @@ ul {
   }
   .quiz__card {
     width: 45%;
-    margin: 18px;
+    margin: 1.125rem;
   }
   .quiz__btn {
     width: 24rem;
-    border: 2px solid #13182c;
-    border-radius: 0;
-    background-color: #13182c;
-    color: #fff;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    font-size: 22px;
-    font-weight: 600;
-    padding: 18px 0;
-    margin: 0 auto 20px;
+    font-size: 1.375rem;
+    padding: 1.125rem 0;
   }
   .quiz__submit-btn {
     width: 24rem;
@@ -594,17 +581,17 @@ ul {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    height: 130px;
-    width: 130px;
+    height: 8.125rem;
+    width: 8.125rem;
     border-radius: 50%;
-    margin-left: 200px;
+    margin-left: 12.5rem;
   }
   .quiz__timer-image {
     display: unset;
-    height: 130px;
-    width: 130px;
+    height: 8.125rem;
+    width: 8.125rem;
     border-radius: 50%;
-    margin-right: 200px;
+    margin-right: 12.5rem;
   }
 }
 
@@ -910,7 +897,6 @@ ul {
 }
 
 .final__score {
-  padding: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -918,18 +904,19 @@ ul {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 1rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   background-color: #e7e5e5;
 }
 
 .final__score-username {
   color: #0094da;
-  font-size: 50px;
+  font-size: 3.125rem;
   text-transform: uppercase;
 }
 
@@ -941,22 +928,22 @@ ul {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .final__score-text {
   color: #0094da;
-  font-size: 50px;
+  font-size: 3.125rem;
 }
 
 .final__score-count {
   color: #0094da;
-  font-size: 45px;
+  font-size: 2.8125rem;
 }
 
 .final__score-btn {
@@ -971,24 +958,24 @@ ul {
 
 .final__score-playAgain {
   background-color: #13182c;
-  color: white;
-  width: 100px;
-  height: 30px;
+  color: #ffffff;
+  width: 6.25rem;
+  height: 1.875rem;
   cursor: pointer;
   outline: none;
 }
 
 .final__score-logOut {
   background-color: #13182c;
-  color: white;
-  width: 100px;
+  color: #ffffff;
+  width: 6.25rem;
   cursor: pointer;
   outline: none;
 }
 
 .final__score-lower {
-  margin-top: 16px;
-  padding: 20px 30px;
+  margin-top: 1rem;
+  padding: 1.25rem 1.875rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -996,20 +983,20 @@ ul {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   text-align: center;
   border: 2px solid #0094da;
   background-color: #e7e5e5;
 }
 
 .final__score-icon {
-  font-size: 36px;
-  margin-bottom: 10px;
+  font-size: 2.25rem;
+  margin-bottom: 0.625rem;
   color: #2e66e6;
 }
 
@@ -1018,9 +1005,9 @@ ul {
 }
 
 .comment__form {
-  padding: 16px;
-  border: 2px solid white;
-  margin-top: 16px;
+  padding: 1rem;
+  border: 2px solid #ffffff;
+  margin-top: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1028,41 +1015,41 @@ ul {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .comment__form-label {
   background-color: #e7e5e5;
   font-weight: bold;
-  padding: 4px 8px;
-  border: 4px solid #2e66e6;
+  padding: 0.25rem 0.5rem;
+  border: 0.25rem solid #2e66e6;
 }
 
 .comment__form-comment {
-  padding: 16px;
+  padding: 1rem;
   width: 100%;
-  height: 100px;
-  border: 2px solid white;
+  height: 6.25rem;
+  border: 2px solid #ffffff;
   background-color: #0084da;
   outline: none;
-  color: white;
-  font-size: 18;
+  color: #ffffff;
+  font-size: 1.125rem;
 }
 
 .comment__form-comment::-webkit-input-placeholder {
-  color: white;
+  color: #ffffff;
 }
 
 .comment__form-btn {
   background-color: #13182c;
-  color: white;
-  width: 100px;
-  height: 30px;
+  color: #ffffff;
+  width: 6.25rem;
+  height: 1.875;
   cursor: pointer;
   outline: none;
 }

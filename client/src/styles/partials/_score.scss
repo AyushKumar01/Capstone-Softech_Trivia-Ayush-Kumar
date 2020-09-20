@@ -4,31 +4,27 @@
 
 .final{
     &__score {
+        @include flexDirectionColum;
         padding: 1rem;
-        display: flex;
-        flex-direction: column;
         justify-content: center;
-        align-items: center;
-        background-color: rgb(231, 229, 229);
+        background-color: $spark-white;
     }
     &__score-username{
         color: $bright-blue;
-        font-size: 50px;
+        font-size: 3.125rem;
         text-transform: uppercase;
     }
     &__score-upper {
-        display: flex;
-        flex-direction: column;
+        @include flexDirectionColum;
         justify-content: center;
-        align-items: center;
     }
     &__score-text {
        color: $bright-blue;
-       font-size: 50px;
+       font-size: 3.125rem;
     }
     &__score-count {
         color: $bright-blue;
-        font-size: 45px;
+        font-size: 2.8125rem;
     }
     &__score-btn {
         display: flex;
@@ -37,77 +33,71 @@
     }
     &__score-playAgain {
         background-color: $soft-black;
-        color: white;
-        width: 100px;
-        height: 30px;
+        color: $white;
+        width: 6.25rem;
+        height: 1.875rem;
         cursor: pointer;
         outline: none;
     }
     &__score-logOut {
         background-color: $soft-black;
-        color: white;
-        width: 100px;
+        color: $white;
+        width: 6.25rem;
         cursor: pointer;
         outline: none;
     }
     &__score-lower {
-        margin-top: 16px;
-        padding: 20px 30px;
-        display: flex;
-        flex-direction: column;
+        margin-top: 1rem;
+        padding: 1.25rem 1.875rem;
+        @include flexDirectionColum;
         justify-content: center;
-        align-items: center;
         text-align: center;
         border: 2px solid $bright-blue;
-        background-color: rgb(231, 229, 229);
+        background-color: $spark-white;
     }
     &__score-icon {
-        font-size: 36px;
-        margin-bottom: 10px;
+        font-size: 2.25rem;
+        margin-bottom: 0.625rem;
         color: $indigo;
-        // width: 200px;
     }
     &__score-greet {
         font-weight: bold;
-        // width: 200px;
     }
 }
 
 
 .comment {
     &__form {
-        padding: 16px;
-        border: 2px solid white;
-        margin-top: 16px;
-        display: flex;
-        flex-direction: column;
+        padding: 1rem;
+        border: 2px solid $white;
+        margin-top: 1rem;
+        @include flexDirectionColum;
         justify-content: center;
-        align-items: center;
     }
     &__form-label {
-        background-color: rgb(231, 229, 229);
+        background-color: $spark-white;
         font-weight: bold;
-        padding: 4px 8px;
-        border: 4px solid #2e66e6;
+        padding: 0.25rem 0.5rem;
+        border: 0.25rem solid #2e66e6;
     }
     &__form-comment {
-        padding: 16px;
+        padding: 1rem;
         width: 100%;
-        height: 100px;
-        border: 2px solid white;
-        background-color: #0084da;
+        height: 6.25rem;
+        border: 2px solid $white;
+        background-color: $light-blue;
         outline: none;
-        color: white;
-        font-size: 18;
+        color: $white;
+        font-size: 1.125rem;
     }
     &__form-comment::-webkit-input-placeholder {
-        color: white;
+        color: $white;
      }
      &__form-btn{
         background-color: #13182c;
-        color: white;
-        width: 100px;
-        height: 30px;
+        color: $white;
+        width: 6.25rem;
+        height: 1.875;
         cursor: pointer;
         outline: none;
      }
