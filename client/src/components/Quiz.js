@@ -95,26 +95,33 @@ export default class Quiz extends Component {
         }
     }
     
+    submit = () => {
+        clearInterval(this.timer);
+        this.resetTimer();
+    }
+
     countDown = () => {
         // Remove one second, set state so a re-render happens.
-        let seconds = this.state.seconds - 1;
-        this.setState({
-          time: this.secondsToTime(seconds),
-          seconds: seconds,
-        });
-        
-        // Check if we're at zero.
-        if (seconds === 0) { 
-          clearInterval(this.timer);
-
-          if(this.state.number === this.state.questions.length){
-            this.setState({showButton : true});
-            this.resetTimer();
-          }else{              
-            this.setAnswerState();
-            this.resetTimer(); 
-            this.startTimer(); 
-          }
+        if(window.location.href.toString().includes("category")){
+            let seconds = this.state.seconds - 1;
+            this.setState({
+              time: this.secondsToTime(seconds),
+              seconds: seconds,
+            });
+            
+            // Check if we're at zero.
+            if (seconds === 0) { 
+              clearInterval(this.timer);
+    
+              if(this.state.number === this.state.questions.length){
+                this.setState({showButton : true});
+                this.resetTimer();
+              }else{              
+                this.setAnswerState();
+                this.resetTimer(); 
+                this.startTimer(); 
+              }
+            }
         }
     }
 

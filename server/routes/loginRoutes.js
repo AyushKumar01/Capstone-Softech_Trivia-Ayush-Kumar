@@ -7,6 +7,7 @@ const bookshelf = require("../bookshelf");
 require('dotenv').config();
 const { JWT_SECRET } = process.env;
 
+//api for login
 router
   .route("/")
   .post((req, res) => {
@@ -27,7 +28,7 @@ router
     }).catch(() => {res.status(400).json({ error: 'user details are invalid' });
   });
 });
-  
+//api for signup
 router
   .route("/signup")
   .post((req, res) => {

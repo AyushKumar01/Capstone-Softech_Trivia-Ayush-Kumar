@@ -17,6 +17,7 @@ class Home extends Component {
         try {
             const { data } = await this.getComment();
             Constant.verifyResponse(data.error);
+            //order comments by time in descending order
             this.setState({
                 comments: data.comment && data.comment.sort(function(a, b){ return new Date(b.comment_at) - new Date(a.comment_at) })
             });
@@ -26,6 +27,7 @@ class Home extends Component {
     }
     
     getComment = () => {
+        //get last 2 comments from database
         return axios
         .get(`${url}/comment?count=2`, {
             headers: {

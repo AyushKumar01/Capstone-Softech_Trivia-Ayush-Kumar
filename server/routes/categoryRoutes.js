@@ -4,6 +4,7 @@ const Category = require("../models/categoryModel");
 const Question = require("../models/questionModel");
 const verifyToken = require("../routes/commonFunction");
 
+//api to get all categories
 router
   .route("/")
   .get(verifyToken, (_req, res) => {
@@ -12,7 +13,8 @@ router
         }).catch(() => {res.status(400).json({ error: 'unable to fetch categories' });
       });
   });
-
+  
+//api to get questions based on category Id
 router
 .route("/:id")
 .get(verifyToken, (req, res) => {    

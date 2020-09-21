@@ -102,7 +102,7 @@ export class SignUp extends Component {
               <label className="login__form-label">EMAIL</label><br/> 
               <input className="login__form-userName" type="text" name="email" placeholder="Enter Name" /><br/>
               {emailErr && emailErr.length > 0 && <label className="login__form-label-color">{emailErr}</label>}<br/>
-              <label className="login__form-label">ENTER PASSWORD</label><br/> 
+              <label className="login__form-label">PASSWORD</label><br/> 
               <input className="login__form-password" type="password" name="password" placeholder="Enter Password" /><br/>
               {passwordErr && passwordErr.length > 0 && <label className="login__form-label-color">{passwordErr}</label>}<br/>
               <div className="login__form-buttons">

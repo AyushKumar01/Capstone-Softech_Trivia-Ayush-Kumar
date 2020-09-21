@@ -4,6 +4,7 @@ const Comment = require("../models/commentModel");
 const bookshelf = require("../bookshelf");
 const verifyToken = require("../routes/commonFunction");
 
+//api to get top(n) comments by descending comment_at order; based on count  
 router
   .route("/")
   .get(verifyToken, (req, res) => { 
@@ -22,6 +23,7 @@ router
         });
       }
   })
+  //api to save comment request by user
   .post(verifyToken, (req, res) => {       
       const { username, comment, userId } = req.body;
       if (!username || !comment) {

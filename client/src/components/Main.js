@@ -28,6 +28,7 @@ export class Main extends Component {
         event.preventDefault();
         const { username, password } = event.target;
         
+        //validate username and password
         const errors = this.validate(username.value, password.value);
         if (errors.usernameErr || errors.passwordErr) {
           this.setState({ errors : errors });
@@ -67,6 +68,7 @@ export class Main extends Component {
           });
       };
 
+      //username and password validation
       validate = (username, password) => {
         let errors = this.state.errors;
         errors.usernameErr = "";
@@ -93,7 +95,7 @@ export class Main extends Component {
                 <label className="login__form-label">USER NAME</label><br/> 
                 <input className="login__form-userName" type="text" name="username" placeholder="Enter Name" /><br/>
                 {usernameErr && usernameErr.length > 0 && <label className="login__form-label-color">{usernameErr}</label>}<br/>
-                <label className="login__form-label">ENTER PASSWORD</label><br/> 
+                <label className="login__form-label">PASSWORD</label><br/> 
                 <input className="login__form-password" type="password" name="password" placeholder="Enter Password" /><br/>
                 {passwordErr && passwordErr.length > 0 && <label className="login__form-label-color">{passwordErr}</label>}<br/>
                 <div className="login__form-buttons">

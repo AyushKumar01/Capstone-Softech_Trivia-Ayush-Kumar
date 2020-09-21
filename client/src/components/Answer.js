@@ -6,6 +6,7 @@ class Answer extends Component {
         header: ["A", "B", "C", "D"]
     }
 
+    //get answer and update score
     checkAnswer = (e) => {
         let { isAnswered } = this.props;
         

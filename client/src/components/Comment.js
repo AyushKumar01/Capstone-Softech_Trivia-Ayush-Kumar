@@ -13,7 +13,8 @@ class Comment extends Component {
 async componentDidMount() {
     try { 
         const { data } = await this.getComment();
-        Constant.verifyResponse(data.error);    
+        Constant.verifyResponse(data.error);
+        //order comments by time in descending order    
         this.setState({
         comments: data.comment && data.comment.sort(function(a, b){ return new Date(b.comment_at) - new Date(a.comment_at) })
         });

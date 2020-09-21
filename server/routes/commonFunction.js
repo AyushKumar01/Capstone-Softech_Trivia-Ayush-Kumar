@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 
 const { JWT_SECRET } = process.env;
 
+//common function to verify token before api calls
 function verifyToken(req, res, next){
   if(req.headers.authorization){
     const token = req.headers.authorization.split(' ')[1];
