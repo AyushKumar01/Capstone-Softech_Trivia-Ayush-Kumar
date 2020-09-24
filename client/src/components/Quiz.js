@@ -21,22 +21,25 @@ export default class Quiz extends Component {
   
     async componentDidMount() {
         try {
-            this.startTimer();
             const { data } = await this.getQuestionsById();
             Constant.verifyResponse(data.error);
             this.setState({
                 questions: data.questions
             }); 
             this.pushData(this.state.number);
+            this.startTimer();
         } catch (error) {
             console.log(error);
         }
+    }
+    componentWillUnmount(){
+        clearInterval(this.timer);
     }
     
     getQuestionsById = () => {
         let id = this.props.match.params.id;
         return axios
-        .get(`${Constant.API_URL}/category/${id}`, {
+        .get(`${Constant.API_URL}/api/category/${id}`, {
             headers: {
               authorization: `BEARER ${Constant.getToken()}`
             }})   
@@ -102,25 +105,23 @@ export default class Quiz extends Component {
 
     countDown = () => {
         // Remove one second, set state so a re-render happens.
-        if(window.location.href.toString().includes("category")){
-            let seconds = this.state.seconds - 1;
-            this.setState({
-              time: this.secondsToTime(seconds),
-              seconds: seconds,
-            });
-            
-            // Check if we're at zero.
-            if (seconds === 0) { 
-              clearInterval(this.timer);
-    
-              if(this.state.number === this.state.questions.length){
-                this.setState({showButton : true});
-                this.resetTimer();
-              }else{              
-                this.setAnswerState();
-                this.resetTimer(); 
-                this.startTimer(); 
-              }
+        let seconds = this.state.seconds - 1;
+        this.setState({
+            time: this.secondsToTime(seconds),
+            seconds: seconds,
+        });
+        
+        // Check if we're at zero.
+        if (seconds === 0) { 
+            clearInterval(this.timer);
+
+            if(this.state.number === this.state.questions.length){
+            this.setState({showButton : true});
+            this.resetTimer();
+            }else{              
+            this.setAnswerState();
+            this.resetTimer(); 
+            this.startTimer(); 
             }
         }
     }

@@ -31,7 +31,7 @@ class Score extends Component {
             comment: comment
         };
         axios
-        .post(`${url}/comment`, userObj, {
+        .post(`${url}/api/comment`, userObj, {
             headers: {
               authorization: `BEARER ${Constant.getToken()}`
             }})

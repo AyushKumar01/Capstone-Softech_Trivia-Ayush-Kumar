@@ -12,6 +12,6 @@ app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use("/login", loginRoute);
-app.use("/category", categoryRoute);
-app.use("/comment", commentRoute);
+app.use("/api/category", categoryRoute);
+app.use("/api/comment", commentRoute);
 app.listen(PORT, console.log(`${BACKEND_URL}:${PORT}`));

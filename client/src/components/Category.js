@@ -19,11 +19,11 @@ class Category extends Component {
         } catch (error) {
           console.log(error);
         }
-      }
+    }
   
     getCategories = () => {
         return axios
-          .get(`${Constant.API_URL}/category`, {
+          .get(`${Constant.API_URL}/api/category`, {
             headers: {
               authorization: `BEARER ${Constant.getToken()}`
             }})

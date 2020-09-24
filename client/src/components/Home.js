@@ -29,7 +29,7 @@ class Home extends Component {
     getComment = () => {
         //get last 2 comments from database
         return axios
-        .get(`${url}/comment?count=2`, {
+        .get(`${url}/api/comment?count=2`, {
             headers: {
                 authorization: `BEARER ${Constant.getToken()}`
             }

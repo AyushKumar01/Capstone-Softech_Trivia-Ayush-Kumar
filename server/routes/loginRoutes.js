@@ -3,7 +3,6 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const Login = require("../models/loginModel");
 const bookshelf = require("../bookshelf");
-
 require('dotenv').config();
 const { JWT_SECRET } = process.env;
 

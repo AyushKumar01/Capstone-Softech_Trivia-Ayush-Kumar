@@ -3,7 +3,6 @@ import About from './About';
 import axios from 'axios';
 import * as Constant from './Constants';
 require('dotenv').config();
-
 const url = Constant.API_URL;
 
 export class SignUp extends Component {

@@ -21,16 +21,17 @@ export const getUserId = () => {
 //logout user
 export const logoutUser = (showAlert, errorMessage) => {
     if(showAlert) alert(errorMessage);
+    localStorage.clear();
     
-    if (localStorage.getItem('userId')) {
-        localStorage.removeItem('userId');
-    }
-    if (localStorage.getItem('username')) {
-        localStorage.removeItem('username');
-    }
-    if (localStorage.getItem('jwt_token')) {
-        localStorage.removeItem('jwt_token');
-    }
+    // if (localStorage.getItem('userId')) {
+    //     localStorage.removeItem('userId');
+    // }
+    // if (localStorage.getItem('username')) {
+    //     localStorage.removeItem('username');
+    // }
+    // if (localStorage.getItem('jwt_token')) {
+    //     localStorage.removeItem('jwt_token');
+    // }
     window.location.href = '/';
 }
 
